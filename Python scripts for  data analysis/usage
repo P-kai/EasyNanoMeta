@@ -17,3 +17,22 @@ usage: co-located.py [-h] [--i I]
 options:
   -h, --help  show this help message and exit
   --i I
+
+
+$ python3 merge_tables.py -h
+usage: merge_tables.py [-h] [--input_dir INPUT_DIR] [--identifier IDENTIFIER]
+                       [--prefix PREFIX] [--output OUTPUT] [--column COLUMN]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --input_dir INPUT_DIR, -i INPUT_DIR
+                        Input data directory.
+  --identifier IDENTIFIER, -d IDENTIFIER
+                        The uniform identifier for name of the prepared files.
+  --prefix PREFIX, -p PREFIX
+                        The prefix of output result.
+  --output OUTPUT, -o OUTPUT
+                        Output data directory.
+  --column COLUMN, -c COLUMN
+                        Column name used as the key for merging between
+                        Dataframes.
