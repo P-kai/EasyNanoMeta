@@ -6,4 +6,4 @@ With the widespread application of nanopore sequencing in microbiology, there ha
 
 ## Workflow
 
-![image](https://github.com/P-kai/EasyNanoMeta/blob/main/Figures/figure1.tif)
+![image](https://github.com/P-kai/EasyNanoMeta/blob/main/Figures/figure1.png)
