@@ -12,7 +12,7 @@
     PATH=${soft}/bin:${soft}/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:${db}/EasyMicrobiome/linux:${db}/EasyMicrobiome/script
     echo $PATH
 
-# 下载最新版miniconda3
+# 下载最新版miniconda3，软件管理工具
     wget -c https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
     # 安装，-b批量，-f无提示，-p目录，许可协议打yes
     bash Miniconda3-latest-Linux-x86_64.sh -b -f -p ${soft}
@@ -34,3 +34,38 @@
     conda config --show-sources
     # 查看虚拟环境列表 
     conda env list
+
+# 安装数据质控及去宿主软件
+## 安装porechop_abi
+    # 创建porechop_abi单独的conda环境，使用conda安装软件
+    conda create -y -n porechop_abi
+    conda activate porechop_abi
+    conda install -f -c conda-forge -c bioconda  porechop_abi
+
+## 安装nanopack
+    #创建nanopack环境,python3.10版本可成功安装，其他python版本可能安装失败。
+    conda create -y -n nanopack python=3.10 
+    conda activate nanopack
+    
+    #使用pip安装nanopack
+    pip install nanopack
+
+    #不成功，可尝试使用pip的国内清华源安装nanopack，由于网络问题的失败，可多尝试几次。
+    pip install -i https://pypi.tuna.tsinghua.edu.cn/simple nanopack 
+
+    #注意最终安装成功的软件路径提示，一般为path下
+    /ifs1/User/yongxin/.local/bin/
+
+## 安装minimap2，samtools，bedtools
+    conda create -y -n host_removal
+    conda activate host_removal
+    conda install -c bioconda minimap2
+    conda install -c bioconda samtools
+    conda install -c bioconda bedtools
+
+    #使用打包的conda package安装
+    #package下载：https://figshare.com/account/projects/201156/articles/25569159
+    mkdir ~/miniconda3/envs/host_removal/
+    tar -xzvf host_removal.tar.gz -C ~/miniconda3/envs/host_removal/
+    conda activate host_removal
+    conda unpack
