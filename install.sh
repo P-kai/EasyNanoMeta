@@ -1,3 +1,6 @@
+# 本脚本用于EasyNanoMeta分析流程的软件安装
+# 设置数据库路径及软件安装路径
+
     db=~/db
     mkdir -p ${db} && cd ${db}
     # 软件安装位置Software installation location，默认为~/miniconda3，测试服务器为/anaconda3
