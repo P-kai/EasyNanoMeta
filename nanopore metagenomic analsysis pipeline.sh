@@ -512,7 +512,9 @@ mock数据集，污水处理厂活性污泥，人肠道宏基因组，鸡肠道�
 
     #注意，使用pilon校准组装结果，一般进行多轮校准，推荐3-4轮
 
-# 五、三代宏基因组组装结果分箱分析
+# 五、三代宏基因组组装结果分箱及分箱提纯、重组装分析
+
+## 5.1 纯三代宏基因组组装结果分箱
 
 ### 5.1.1 使用SemiBin进行三代宏基因组组装结果分箱
 
@@ -531,12 +533,114 @@ mock数据集，污水处理厂活性污泥，人肠道宏基因组，鸡肠道�
     samtools sort -@ 10 ${i}.bam > ${i}.sorted.bam 
     #使用SemiBin运行bin
     SemiBin single_easy_bin -i ${i}.fasta  --sequencing-type long_read -b ${i}.sorted.bam -o bin_output --environment global 
+
+## 5.2 二三代宏基因组混合组装结果分箱
+
+### 5.2.1 使用metawrap进行二三代宏基因组组装结果分箱
+
+    #宏基因组分箱软件：metawrap，包括metabat,metabat2,maxbin2,concoct方法
+    #方法一. 使用conda进行软件安装
+    #创建metawrap单独的conda环境，注意python版本为2.7
+    conda create -y -n metawrap python=2.7
+    conda activate metawrap
+    conda config --add channels ursky
+    conda install -y -c ursky metawrap-mg
+
+    #方法二. 使用conda安装经常会不成功，可选择直接下载我们安装好的conda环境打包
+    #下载metawrap环境，并解压到自己的conda环境下
+    wget -c http://210.75.224.110/db/metawrap/metawrap1.3.tar.gz
+
+    mkdir -p /your/path/envs/metawrap1.3
+    tar -xzf metawrap1.3.tar.gz -C /your/path/envs/metawrap1.3
+    # 激活环境，解打包
+    source /your/path/envs/metawrap1.3/bin/activate
+    conda unpack
+
+    #使用metawrap里面的分箱模式进行二三代宏基因组组装数据分箱
+    #运行分箱，原始数据为二代数据，格式必须为*_1.fastq；*_2.fastq
+    i=sample_name
+    metawrap binning --metabat2 --maxbin2 --concoct -t 48 --run-checkm -a ${i}.fa -o bin ${i}_clean_1.fastq ${i}_clean_2.fastq
+
+ ## 5.3 宏基因组组装结果分箱提纯及定量
+
+    #软件：metawrap
+    #使用metawrap进行分箱提纯，参数为完整度大于80%，污染小于10%
+    metawrap bin_refinement \
+      -A maxbin2_bins/ \
+      -B metabat2_bins/ \
+      -C concoct_bins/ \
+      -o out_dir \
+      -t 12 -c 80 
+
+    #分箱定量，此处为根据二代宏基因组原始数据进行定量
+    metawrap quant_bins -t 24 \
+      -b metawrap_80_10_bins \
+      -o bin_quant \
+      -a ${i}.fa ${i}.fa_clean_1.fastq ${i}.fa_clean_2.fastq 
+
+
+#安装vamb
+pip install vamb -i https://pypi.tuna.tsinghua.edu.cn/simple
+/ifs1/User/yongxin/.local/bin #软件路径
+export PATH=$PATH:/ifs1/User/yongxin/.local/bin/ #临时添加软件路径到环境变量
+vamb --outdir canu_vamb --fasta canu.contigs.fasta --bamfiles canu.sorted.bam --minfasta 200000
     
-# 六、三代宏基因组原始数据物种及功能注释
+# 六、分箱结果的物种及功能注释
 
-## 6.1 三代宏基因组数据物种注释
+## 6.1 分箱结果MAG的物种注释
 
-### 6.1.1 使用centrifuge进行三代宏基因组物种注释
+### 6.1.1 使用GTDB-Tk进行MAG的基因组物种注释
+    #MAG基因组分类及注释软件GTDB-Tk
+    #使用conda创建新的环境并安装GTDB-Tk
+    conda create -n gtdbtk-2.1.1 -c conda-forge -c bioconda gtdbtk=2.1.1 
+    #激活GTDB-Tk软件安装环境
+    conda activate gtdbtk-2.1.1 
+    #直接使用软件自带脚本进行数据库配置，数据库配置位置为~/miniconda3/envs/gtdbtk-2.1.1/share/gtdbtk-2.1.1/db/gtdbtk_r207_v2_data.tar.gz
+    download-db.sh
+
+    #同时可选择手动配置数据库
+    #设置数据库路径
+    mkdir -p ~/db/gtdb & cd ~/db/gtdb
+    #下载并解压数据库
+    wget -c https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/auxillary_files/gtdbtk_data.tar.gz  
+    tar -zxvf gtdbtk_data.tar.gz
+    #设置数据库位置，注意修改软件安装位置
+    locate gtdbtk.sh # 查找配置文件位置
+    #修改PATH=后面的路径为数据库解压目录，如/home/meta/db/gtdb/release95/
+    vim /conda/envs/gtdbtk/etc/conda/activate.d/gtdbtk.sh
+
+    #从官网下载适当的数据库，下载214版本的数据库
+    wget https://data.gtdb.ecogenomic.org/releases/release214/214.0/auxillary_files/gtdbtk_r214_data.tar.gz 
+    #解压数据库
+    tar -zcvf gtdbtk_r214_data.tar.gz
+    #将下载的数据库配置到软件环境变量
+    export GTDBTK_DATA_PATH=/ifs1/User/yongxin/db/gtdb 
+
+    #确定软件需要的第三方程序以及数据库是否正常
+    gtdbtk check_install 
+    #运行bin物种分类及进化树构建
+    gtdbtk classify_wf --genome_dir maxbin2_bins/ --extension fa  --skip_ani_screen --out_dir gtdbtk 
+    gtdbtk convert_to_itol --input some_tree.tree --output itol.tree #转换进化树格式到itol
+
+
+# 七、三代宏基因组原始数据校准
+
+## 7.1 三代宏基因组原始数据校准
+
+### 7.1.1 使用medaka进行纳米孔原始数据校准
+    
+    #使用conda进行软件安装，创建medaka环境，在独立环境中安装medaka
+    conda create -n medaka #创建medaka环境
+    conda activate medaka
+    pip install medaka -i https://pypi.tuna.tsinghua.edu.cn/simple #软件安装
+    /ifs1/User/yongxin/.local/bin/medaka  #软件目录
+    /ifs1/User/yongxin/.local/bin/medaka_consensus -i CE4.fq.gz -d CE4-flye/assembly.fasta -o medaka_consensus -t 12 #使用medaka进行组装数据校准
+
+# 八、三代宏基因组原始数据物种及功能注释
+
+## 8.1 三代宏基因组数据物种注释
+
+### 8.1.1 使用centrifuge进行三代宏基因组物种注释
 
     #软件安装
     #方法一. 直接下载最新版本软件安装包，解压后编译
@@ -581,7 +685,7 @@ mock数据集，污水处理厂活性污泥，人肠道宏基因组，鸡肠道�
       -x /ifs1/Database/centrifuge_h+p+v_20200318/hpv \
       ${i}_result > ${i}_kraken_report
 
-### 6.1.2 使用kraken2进行三代宏基因组物种注释
+### 8.1.2 使用kraken2进行三代宏基因组物种注释
     
     #软件安装
     #方法一. 直接下载软件安装包进行解压安装
@@ -616,9 +720,9 @@ mock数据集，污水处理厂活性污泥，人肠道宏基因组，鸡肠道�
       --output ${i}_kraken_result \
       ${i}.fastq
 
-## 6.2 三代宏基因组数据抗性基因注释
+## 8.2 三代宏基因组数据抗性基因注释
 
-### 6.2.1 使用abricate进行三代宏基因组原始数据抗性基因识别
+### 8.2.1 使用abricate进行三代宏基因组原始数据抗性基因识别
 
     #软件安装
     #直接使用conda安装abricate
@@ -650,3 +754,30 @@ mock数据集，污水处理厂活性污泥，人肠道宏基因组，鸡肠道�
 
     #使用脚本进行宏基因组中耐药基因丰度计算
     python abundance_calculate.py --i ${i}_ncbi_result --data_size metagenome_size > ${i}_abundance_result
+
+### 8.2.2 使用abricate进行三代宏基因组原始数据插入序列识别
+
+    #激活conda环境
+    conda activate abricate
+
+    #下载最新的插入序列数据库并构建库，下载地址：https://raw.githubusercontent.com/thanhleviet/ISfinder-sequences/master/IS.fna
+    #进入abricate数据库目录，若为conda或miniconda安装，则在conda目录下
+    cd /path/to/abricate/db
+    #创建ISfinder文件夹，并将fasta格式的数据库拷贝到文件夹内，重命名为sequences
+    mkdir ISfinder
+    cp /your/database/database.fasta ISfinder/sequences
+    #创建数据库，名称为 ISfinder
+    makeblastdb -in sequences -title ISfinder -dbtype nucl -hash_index
+
+    #使用abricate识别宏基因组序列中的插入序列
+    i=sample_name
+    abricate --db ISfinder -t 24 ${i}.fasta > ${i}_ISfinder_result
+
+### 8.2.3 使用abricate进行三代宏基因组原始数据毒力基因的识别
+
+    #软件提供vfdb毒力基因数据库，更新该数据库
+    abricate-get_db --db vfdb
+
+    #使用abricate识别宏基因组序列中的毒力基因
+    i=sample_name
+    abricate --db vfdb -t 24 ${i}.fasta > ${i}_vfdb_result
