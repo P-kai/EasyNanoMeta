@@ -120,7 +120,7 @@
     #安装软件依赖包
     pip install paralleltask
 
-    #查看软件版本：
+    #查看软件版本：nextDenovo 2.5.2
     ~/tools/NextDenovo/nextDenovo --version
     
 ## 2.2 安装长短读混合宏基因组组装软件
