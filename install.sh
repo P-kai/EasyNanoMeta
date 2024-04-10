@@ -193,4 +193,34 @@
     unicycler --version
 
     #使用conda的package进行软件安装
-    #package下载：
+    #package下载：https://figshare.com/articles/software/Untitled_Item/25573875
+    cd ~/tools
+    wget -c --no-check-certificate --no-proxy https://figshare.com/ndownloader/files/45563385 -O unicycler.tar.gz
+    mkdir ~/miniconda3/envs/unicycler/
+    tar -xzvf unicycler.tar.gz -C ~/miniconda3/envs/unicycler/
+    conda activate unicycler
+    conda unpack
+
+# 3. 安装组装结果校准软件
+## 3.1 三代组装结果校准
+### 安装minimap2和recon
+    #使用minimap2与racon进行组装基因组校准，若当前环境无minimap2与recon，则首先使用conda进行软件安装
+    #使用conda安装minimap2与recon，已安装软件可跳过此步骤
+    conda install -y minimap2
+    conda install -y racon
+
+    #查看软件版本：minimap2 2.17-r943-dirty；
+    minimap2 --version
+
+### 安装NextPolish
+    #下载软件安装包，解压并编译
+    cd ~/tools
+    wget https://github.com/Nextomics/NextPolish/releases/latest/download/NextPolish.tgz
+    tar -vxzf NextPolish.tgz && cd NextPolish && make
+
+    #安装软件依赖
+    pip install paralleltask
+
+    #查看软件版本：v1.4.1
+    ~/tools/NextPolish/nextPolish --version
+
