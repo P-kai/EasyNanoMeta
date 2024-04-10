@@ -253,9 +253,9 @@
     SemiBin2 --version
 
     #使用conda的package进行软件安装
-    #package下载：
+    #package下载：https://figshare.com/account/projects/201156/articles/25574010
     cd ~/tools
-    wget -c --no-check-certificate --no-proxy  -O SemiBin.tar.gz
+    wget -c --no-check-certificate --no-proxy https://figshare.com/ndownloader/files/45563634 -O SemiBin.tar.gz
     mkdir ~/miniconda3/envs/SemiBin/
     tar -xzvf SemiBin.tar.gz -C ~/miniconda3/envs/SemiBin/
     conda activate SemiBin
