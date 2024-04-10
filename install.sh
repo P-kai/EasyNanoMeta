@@ -153,3 +153,44 @@
     #激活operams环境，查看软件版本：OPERA-MS v0.9.0
     conda activate operams
     perl ~/tools/OPERA-MS/OPERA-MS.pl
+
+### 安装MetaSPAdes
+    # 下载预编译的软件安装包，解压
+    cd ~/tools
+    wget https://github.com/ablab/spades/releases/download/v3.15.5/SPAdes-3.15.5-Linux.tar.gz
+    tar -zxvf SPAdes-3.15.5-Linux.tar.gz
+
+    #查看软件版本：SPAdes genome assembler v3.15.5
+    ~/tools/SPAdes-3.15.5-Linux/bin/spades.py --version
+
+### 安装MetaPlatanus
+    #使用conda进行软件安装
+    #使用conda创建软件安装单独环境，进入环境进行软件安装
+    conda create -n metaplatanus -y
+    conda activate metaplatanus
+    conda install -c conda-forge -c bioconda metaplatanus
+
+    #查看软件版本：metaplatanus version v1.3.1
+    metaplatanus --version
+
+    #使用conda的package进行软件安装
+    #package下载：https://figshare.com/account/projects/201156/articles/25573755
+    cd ~/tools
+    wget -c --no-check-certificate --no-proxy https://figshare.com/ndownloader/files/45563190 -O metaplatanus.tar.gz
+    mkdir ~/miniconda3/envs/metaplatanus/
+    tar -xzvf metaplatanus.tar.gz -C ~/miniconda3/envs/metaplatanus/
+    conda activate metaplatanus
+    conda unpack
+
+### 安装Unicycler
+    #使用conda进行软件安装
+    #使用conda创建软件安装单独环境，进入环境进行软件安装
+    onda create -n unicycler -y
+    conda activate unicycler
+    conda install unicycler -c bioconda -y
+
+    #查看软件版本：Unicycler v0.5.0
+    unicycler --version
+
+    #使用conda的package进行软件安装
+    #package下载：
