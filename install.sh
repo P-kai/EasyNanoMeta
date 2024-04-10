@@ -224,3 +224,39 @@
     #查看软件版本：v1.4.1
     ~/tools/NextPolish/nextPolish --version
 
+## 3.2 二代或者二三代混合组装结果校准
+### 安装Pilon
+    # 直接下载，然后使用java调用
+    cd ~/tools
+    wget https://github.com/broadinstitute/pilon/releases/download/v1.24/pilon-1.24.jar
+
+    # 查看pilon版本：Pilon version 1.24 Thu Jan 28 13:00:45 2021 -0500
+    java -Xmx16G -jar ~/tools/pilon-1.24.jar --version
+
+### 安装bwa
+    # 使用git克隆bwa后编译
+    git clone https://github.com/lh3/bwa.git
+    cd bwa; make
+    
+    #添加环境变量
+    export PATH=~/tools/bwa:$PATH
+
+# 4. 安装宏基因组分箱软件
+## 4.1 纳米孔宏基因组分箱软件安装
+### 安装SemiBin
+    #使用conda创建单独的环境进行软件安装
+    conda create -n SemiBin
+    conda activate SemiBin
+    conda install -c conda-forge -c bioconda semibin
+
+    #查看软件版本：2.1.0
+    SemiBin2 --version
+
+    #使用conda的package进行软件安装
+    #package下载：
+    cd ~/tools
+    wget -c --no-check-certificate --no-proxy  -O SemiBin.tar.gz
+    mkdir ~/miniconda3/envs/SemiBin/
+    tar -xzvf SemiBin.tar.gz -C ~/miniconda3/envs/SemiBin/
+    conda activate SemiBin
+    conda unpack
