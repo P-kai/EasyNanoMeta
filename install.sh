@@ -124,3 +124,32 @@
     ~/tools/NextDenovo/nextDenovo --version
     
 ## 2.2 安装长短读混合宏基因组组装软件
+### 安装OPERA-MS
+    #软件安装
+    #使用conda配置软件安装单独环境，安装软件依赖的perl模块
+    conda create -n operams python=3.9
+    #激活conda环境 
+    conda activate operams
+    #在conda环境中安装依赖的perl模块
+    conda install -c conda-forge perl-app-cpanminus 
+    conda install -c compbiocore perl-switch perl==5.26.2
+    conda install -c bioconda perl-file-which perl-statistics-basic perl-statistics-r
+
+    #下载软件安装包
+    cd ~/tools
+    git clone https://github.com/CSB5/OPERA-MS.git
+    #进入软件目录并执行软件编译，最后检查软件依赖的所有perl模块
+    cd OPERA-MS
+    make
+    perl OPERA-MS.pl check-dependency
+
+    #可能遇到问题 “Can't locate Switch.pm”
+    #解决：寻找当前用户目录下有没有Switch.pm模块的安装 find ~/ -name "Switch.pm" 
+    #将找到的模块写入perl路径中，例如： export PERL5LIB=~/perl5/lib/perl5/
+
+    #配置OPERA-MS软件数据库
+    perl OPERA-MS.pl install-db 
+
+    #激活operams环境，查看软件版本：OPERA-MS v0.9.0
+    conda activate operams
+    perl ~/tools/OPERA-MS/OPERA-MS.pl
