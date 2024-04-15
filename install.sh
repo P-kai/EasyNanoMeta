@@ -78,12 +78,29 @@
 ### 安装fastp
     conda install fastp
 
+## 1.4 数据格式转换：转换SRA数据到fastq格式
+### 安装fastq-dump
+    # 直接下载安装
+    cd ~/tools
+    #centos版本
+    wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.0.6/sratoolkit.3.0.6-centos_linux64.tar.gz
+    #ubuntu版本
+    wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.0.6/sratoolkit.3.0.6-ubuntu64.tar.gz
+
+    # 解压使用
+    tar -zxvf sratoolkit.3.0.6-centos_linux64.tar.gz
+    cd sratoolkit.3.0.6-centos_linux64
+
+    # 查看软件版本：3.0.6
+    ~/tools/sratoolkit.3.0.6-centos_linux64/bin/fastq-dump --version
+
 # 2. 安装长读、混合宏基因组组装软件
 ## 2.1 安装长读宏基因组组装软件
 ### 安装MetaFlye
     # 软件下载
     cd ~/tools
     wget https://github.com/fenderglass/Flye/archive/refs/tags/2.9.2.tar.gz
+    # 解压使用
     tar -zxvf Flye-2.9.2.tar.gz
     # 查看软件版本，版本：2.9.2-b1786
     ~/tools/Flye-2.9.2/bin/flye --version
@@ -285,12 +302,55 @@
     metawrap --version
 
     #使用conda的package进行软件安装
-    #package下载：https://figshare.com/account/projects/201156/articles/25574010
+    #package下载：https://figshare.com/articles/software/MetaWrap_1_3_2/25603155
     cd ~/tools
-    wget -c --no-check-certificate --no-proxy  -O metawrap.tar.gz
+    wget -c --no-check-certificate --no-proxy https://figshare.com/ndownloader/files/45651492 -O metawrap.tar.gz
     mkdir ~/miniconda3/envs/metawrap/
     tar -xzvf metawrap.tar.gz -C ~/miniconda3/envs/metawrap/
     conda activate metawrap
     conda unpack
 
-# 5. 安装
+# 5. 安装MAGs质控、物种注释、功能注释软件
+## 5.1 MAGs质控软件
+### 安装checkm
+    # checkm已被整合到流程metawrap中，可直接激活metawrap环境进行使用
+    # 也可使用conda创建环境单独安装checkm
+    # 创建python=3.9的conda环境
+    conda create -n checkm python=3.9
+    conda activate checkm
+
+    # 使用pip3安装checkm及其依赖环境
+    pip3 install numpy
+    pip3 install matplotlib
+    pip3 install pysam
+    pip3 install checkm-genome
+
+    # 查看软件版本：v1.2.2
+    checkm
+
+### 安装checkm2
+    # 使用conda安装checkm2
+    # 创建checkm2环境，注意python版本为3.8，否则可能安装失败
+    conda create -n checkm2 python=3.8
+    conda activate checkm2
+    # 使用mamba安装
+    mamba install -c bioconda -c conda-forge checkm2
+
+    # 使用conda的package进行软件安装
+    #package下载：
+    cd ~/tools
+    wget -c --no-check-certificate --no-proxy  -O checkm2.tar.gz
+    mkdir ~/miniconda3/envs/checkm2/
+    tar -xzvf checkm2.tar.gz -C ~/miniconda3/envs/checkm2/
+    conda activate checkm2
+    conda unpack
+
+    # 配置checkm2数据库
+    # 直接使用checkm2脚本进行数据库下载
+    checkm2 database --download
+
+## 5.2 MAGs物种注释
+### 安装gtdbtk
+    # 使用conda进行软件安装
+    conda create -n gtdbtk-2.2.6 -c conda-forge -c bioconda gtdbtk=2.2.6
+    
