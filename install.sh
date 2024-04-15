@@ -346,8 +346,14 @@
     conda unpack
 
     # 配置checkm2数据库
-    # 直接使用checkm2脚本进行数据库下载
+    # 直接使用checkm2脚本进行数据库下载（经常失败，推荐使用wget）
     checkm2 database --download
+    
+    # 使用wget进行数据库下载
+    mkdir ~/db/checkm2 && cd ~/db/checkm2
+    wget https://zenodo.org/record/5571251/files/checkm2_database.tar.gz
+    # 解压数据库
+    tar -zxvf checkm2_database.tar.gz
 
 ## 5.2 MAGs物种注释
 ### 安装gtdbtk
@@ -356,6 +362,15 @@
     # 查看软件版本: v2.2.6
     conda activate gtdbtk-2.2.6
     gtdbtk --version
+
+    # 使用conda的package进行软件安装
+    #package下载：
+    cd ~/tools
+    wget -c --no-check-certificate --no-proxy  -O checkm2.tar.gz
+    mkdir ~/miniconda3/envs/gtdbtk-2.2.6/
+    tar -xzvf gtdbtk-2.2.6.tar.gz -C ~/miniconda3/envs/gtdbtk-2.2.6/
+    conda activate gtdbtk-2.2.6
+    conda unpack
 
     # 配置软件数据库
     mkdir -p ~/db/gtdbtk & cd ~/db/gtdbtk
