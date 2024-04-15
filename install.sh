@@ -353,4 +353,13 @@
 ### 安装gtdbtk
     # 使用conda进行软件安装
     conda create -n gtdbtk-2.2.6 -c conda-forge -c bioconda gtdbtk=2.2.6
+    # 查看软件版本: v2.2.6
+    conda activate gtdbtk-2.2.6
+    gtdbtk --version
+
+    # 配置软件数据库
+    mkdir -p ~/db/gtdbtk & cd ~/db/gtdbtk
+    wget -c https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/auxillary_files/gtdbtk_data.tar.gz
+    tar -zxvf gtdbtk_data.tar.gz
+
     
