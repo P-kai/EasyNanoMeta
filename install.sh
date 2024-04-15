@@ -377,4 +377,8 @@
     wget -c https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/auxillary_files/gtdbtk_data.tar.gz
     tar -zxvf gtdbtk_data.tar.gz
 
-    
+## 5.3 MAGs功能注释
+### 安装prokka
+    # 使用conda安装prokka
+    conda create -n prokka
+    conda install -c conda-forge -c bioconda -c defaults prokka
