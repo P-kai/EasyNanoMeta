@@ -260,3 +260,8 @@
     tar -xzvf SemiBin.tar.gz -C ~/miniconda3/envs/SemiBin/
     conda activate SemiBin
     conda unpack
+
+### 安装vamb
+    #使用pip安装vamb
+    pip install vamb -i https://pypi.tuna.tsinghua.edu.cn/simple
+    
