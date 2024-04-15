@@ -265,3 +265,32 @@
     #使用pip安装vamb
     pip install vamb -i https://pypi.tuna.tsinghua.edu.cn/simple
     
+    #查看软件版本：Vamb 4.1.3
+    vamb --version
+
+### 安装metawrap
+    #使用conda创建单独的环境进行软件安装
+    conda create -y -n metawrap-env python=2.7
+    conda activate metawrap-env
+    
+    conda config --add channels defaults
+    conda config --add channels conda-forge
+    conda config --add channels bioconda
+    conda config --add channels ursky
+    
+    conda install -y mamba 
+    mamba install --only-deps -c ursky metawrap-mg
+
+    #查看软件版本：1.3.2
+    metawrap --version
+
+    #使用conda的package进行软件安装
+    #package下载：https://figshare.com/account/projects/201156/articles/25574010
+    cd ~/tools
+    wget -c --no-check-certificate --no-proxy  -O metawrap.tar.gz
+    mkdir ~/miniconda3/envs/metawrap/
+    tar -xzvf metawrap.tar.gz -C ~/miniconda3/envs/metawrap/
+    conda activate metawrap
+    conda unpack
+
+# 5. 安装
