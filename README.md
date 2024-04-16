@@ -18,33 +18,33 @@ The main analysis pipeline for nanopore microbial sequences. This comprehensive 
 5. Rscripts_for_ploting: Examples for ploting using R.    
 
 ## Dependencies
-**Miniconda3**  
-**Minimap2**  
-**samtools**  
-**bedtools**  
-**fastp**  
-**Centrifuge**  
-**Kraken2**  
-**Abricate**  
-**MetaFlye**  
-**Canu**  
-**wtdbg2**  
-**NextDenove**  
-**OPERA-MS**  
-**MetaSPAdes**  
-**MetaPlatanus**  
-**Unicycler**  
-**Racon**  
-**NextPolish**  
-**Pilon**  
-**bwa**  
-**Semibin**  
-**vamb**  
-**MetaWrap**  
-**Checkm**  
-**Checkm2**  
-**Gtdbtk**  
-**Prokka**  
+**Miniconda3** (https://docs.anaconda.com/free/miniconda/index.html)  
+**Minimap2** (https://github.com/lh3/minimap2)  
+**samtools** (https://github.com/samtools/samtools)  
+**bedtools** (https://github.com/arq5x/bedtools2)  
+**fastp** (https://github.com/OpenGene/fastp)  
+**Centrifuge** (http://www.ccb.jhu.edu/software/centrifuge)  
+**Kraken2** (https://github.com/DerrickWood/kraken2)  
+**Abricate** (https://github.com/tseemann/abricate)  
+**MetaFlye** (https://github.com/fenderglass/Flye)  
+**Canu** (https://github.com/marbl/canu)  
+**wtdbg2** (https://github.com/ruanjue/wtdbg2)  
+**NextDenove** (https://github.com/Nextomics/NextDenovo)  
+**OPERA-MS** (https://github.com/CSB5/OPERA-MS)  
+**MetaSPAdes** (https://github.com/ablab/spades)  
+**MetaPlatanus** (https://github.com/rkajitani/MetaPlatanus)  
+**Unicycler** (https://github.com/rrwick/Unicycler)  
+**Racon** (https://github.com/isovic/racon)  
+**NextPolish** (https://github.com/Nextomics/NextPolish)  
+**Pilon** (https://github.com/broadinstitute/pilon)  
+**bwa** (https://github.com/lh3/bwa)  
+**Semibin** (https://github.com/BigDataBiology/SemiBin)  
+**vamb** (https://github.com/RasmussenLab/vamb)  
+**MetaWrap** (https://github.com/bxlab/metaWRAP)  
+**Checkm** (https://github.com/Ecogenomics/CheckM)  
+**Checkm2** (https://github.com/chklovski/CheckM2)  
+**Gtdbtk** (https://ecogenomics.github.io/GTDBTk/index.html)  
+**Prokka** (https://github.com/tseemann/prokka)  
 
 ## 1. A practical guidance for assembly-free long-read metagenomic data analysis
 **Figure1**
