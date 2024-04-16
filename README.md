@@ -10,6 +10,12 @@ With the widespread application of nanopore sequencing in microbiology, there ha
 
 The main analysis pipeline for nanopore microbial sequences. This comprehensive statement encompasses the various steps involved in the analysis process, along with the corresponding tools employed. The initial step in analyzing nanopore sequencing data involves data quality control, including basecalling, filtering and host sequences removal. Presently, several tools can be utilized for the analysis of full-length 16S sequencing data obtained through nanopore sequencing. Emu is the most reliable and user-friendly option in this regard. For bacterial genome analysis, accurate and complete bacterial genomes can be generated via two distinct strategies. The first approach entails performing long-read assembly and subsequently refining the assembly using high-accuracy short-read data. The second approach involves hybrid assembly, which combines both long-read and short-read data. Nanopore metagenomic data analysis is more complex than 16S data and bacterial genome data. Assembly-free long-read metagenomic profiling can quickly estimate the abundance of species and functional genes employing few computing resources. In comparison, assembly-based nanopore metagenomic data analysis enable us to study more high-quality MAGs and their functions.
 
+## Pipeline manual and file description
+Files description:
+Readme.md # Introduction
+install.sh # Dependencies install
+pipeline.sh # Command-line analysis for Linux
+
 ## A practical guidance for assembly-free long-read metagenomic data analysis
 
 ![image](https://github.com/P-kai/EasyNanoMeta/blob/main/Figures/figure3.png)
