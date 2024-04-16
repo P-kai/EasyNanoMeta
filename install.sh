@@ -101,7 +101,7 @@
     make
     make install prefix=~/tools/centrifuge-1.0.4
 
-    # Download using git (使用git克隆到本地进行编译安装)
+    # Alternatively, retrieve the Github files (使用git克隆到本地进行编译安装)
     git clone https://github.com/DaehwanKimLab/centrifuge
     cd centrifuge
     make
@@ -172,68 +172,69 @@
     # Create a database with the name your_database_name (创建数据库，名称为 your_database_name)
     makeblastdb -in sequences -title your_database_name -dbtype nucl -hash_index
 
-# 3. 安装长读、混合宏基因组组装软件
-## 3.1 安装长读宏基因组组装软件
-### 安装MetaFlye
-    # 软件下载
+# 3. Install long-read and hybrid metagenomic assembly softwares (安装长读、混合宏基因组组装软件)
+## 3.1 Install long-read metagenomic assembly softwares (安装长读宏基因组组装软件)
+### MetaFlye installation (安装MetaFlye)
+    # Software download (软件下载)
     cd ~/tools
     wget https://github.com/fenderglass/Flye/archive/refs/tags/2.9.2.tar.gz
-    # 解压使用
+    # uncompress (解压使用)
     tar -zxvf Flye-2.9.2.tar.gz
-    # 查看软件版本，版本：2.9.2-b1786
+    # Check the version (查看软件版本，版本：2.9.2-b1786)
     ~/tools/Flye-2.9.2/bin/flye --version
 
-### 安装Canu
-    # 软件下载，链接：https://github.com/marbl/canu/releases
+### Canu installation (安装Canu)
+    # Software download, link: https://github.com/marbl/canu/releases (软件下载，链接：https://github.com/marbl/canu/releases)
     cd ~/tools
     curl -L https://github.com/marbl/canu/releases/download/v2.2/canu-2.2.Linux-amd64.tar.xz --output canu-2.2.Linux.tar.xz
-    #解压软件，即可直接使用
-    #进入软件安装及执行目录，并查看软件安装目录和版本，版本：canu 2.2
+    # Uncompress (解压软件，即可直接使用)
+    # Enter the software installation and execution directory, and check the software installation directory and version. Version: canu 2.2
+    # 进入软件安装及执行目录，并查看软件安装目录和版本，版本：canu 2.2
     tar -xJf canu-2.2.Linux-amd64.tar.xz 
     cd canu-2.2/bin && pwd 
     ~/tools/canu-2.2/bin/canu
     ~/tools/canu-2.2/bin/canu --version
 
-### 安装wdtbg2
-    # 软件下载及安装
+### wtdbg2 installation (安装wdtbg2)
+    # Download and installation (软件下载及安装)
     cd ~/tools
     git clone https://github.com/ruanjue/wtdbg2
     cd wtdbg2 && make
 
-    # 安装wtdbg2依赖工具：samtools，minimap2
+    # Dependence installation: samtlls and minimap2 (安装wtdbg2依赖工具：samtools，minimap2)
     conda install -y samtools
     conda install -y minimap2
 
-    # 查看软件版本：wtdbg2 2.5
+    # Check the version (查看软件版本：wtdbg2 2.5)
     ~/tools/wtdbg2/wtdbg2 --version
 
-### 安装NextDenovo
-    #软件下载及安装
+### NextDenove installation (安装NextDenovo)
+    # Download and installation (软件下载及安装)
     wget https://github.com/Nextomics/NextDenovo/releases/latest/download/NextDenovo.tgz 
     tar -vxzf NextDenovo.tgz
 
-    #安装软件依赖包
+    # Dependence installation (安装软件依赖包)
     pip install paralleltask
 
-    #查看软件版本：nextDenovo 2.5.2
+    # Check the version (查看软件版本：nextDenovo 2.5.2)
     ~/tools/NextDenovo/nextDenovo --version
     
-## 3.2 安装长短读混合宏基因组组装软件
-### 安装OPERA-MS
-    #软件安装
-    #使用conda配置软件安装单独环境，安装软件依赖的perl模块
+## 3.2 Hybrid metagenomic assembler installation (安装长短读混合宏基因组组装软件)
+### OPERA-MS installation (安装OPERA-MS)
+    # Create a conda environment (使用conda配置软件安装单独环境，安装软件依赖的perl模块)
     conda create -n operams python=3.9
-    #激活conda环境 
+    # Activate conda environment (激活conda环境) 
     conda activate operams
-    #在conda环境中安装依赖的perl模块
+    # Install the dependent perl modules in the conda environment (在conda环境中安装依赖的perl模块)
     conda install -c conda-forge perl-app-cpanminus 
     conda install -c compbiocore perl-switch perl==5.26.2
     conda install -c bioconda perl-file-which perl-statistics-basic perl-statistics-r
 
-    #下载软件安装包
+    # Download the software package (下载软件安装包)
     cd ~/tools
     git clone https://github.com/CSB5/OPERA-MS.git
-    #进入软件目录并执行软件编译，最后检查软件依赖的所有perl模块
+    # Enter the software directory and compile the software, and finally check all the perl modules that the software depends on
+    # 进入软件目录并执行软件编译，最后检查软件依赖的所有perl模块
     cd OPERA-MS
     make
     perl OPERA-MS.pl check-dependency
@@ -242,7 +243,7 @@
     #解决：寻找当前用户目录下有没有Switch.pm模块的安装 find ~/ -name "Switch.pm" 
     #将找到的模块写入perl路径中，例如： export PERL5LIB=~/perl5/lib/perl5/
 
-    #配置OPERA-MS软件数据库
+    # 配置OPERA-MS软件数据库
     perl OPERA-MS.pl install-db 
 
     #激活operams环境，查看软件版本：OPERA-MS v0.9.0
