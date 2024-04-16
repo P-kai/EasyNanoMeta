@@ -94,6 +94,85 @@
     # 查看软件版本：3.0.6
     ~/tools/sratoolkit.3.0.6-centos_linux64/bin/fastq-dump --version
 
+# 2. 安装基于长读序列的物种注释、功能注释软件
+## 2.1 长读序列物种注释
+### 安装centrifuge
+    #直接下载最新版本软件安装包，解压后编译
+    cd ~/tools
+    wget https://github.com/DaehwanKimLab/centrifuge/archive/refs/tags/v1.0.4.tar.gz
+    tar -zxvf v1.0.4.tar.gz
+    cd centrifuge-1.0.4
+    make
+    make install prefix=~/tools/centrifuge-1.0.4
+
+    #使用git克隆到本地进行编译安装
+    git clone https://github.com/DaehwanKimLab/centrifuge
+    cd centrifuge
+    make
+    make install prefix=~/tools/centrifuge-1.0.4
+
+    #数据库配置，进入存储数据库的文件夹，进行数据库下载
+    #h+p+v+c: human genome, prokaryotic genomes, and viral genomes including 106 SARS-CoV-2 complete genomes
+    cd ~/db
+    wget https://zenodo.org/record/3732127/files/h%2Bp%2Bv%2Bc.tar.gz?download=1
+    tar -zxvf centrifuge_h+p+v.tar.gz
+
+    #查看软件版本：1.0.4
+    ~/tools/centrifuge-1.0.4/centrifuge --version
+
+### 安装kraken2
+    #直接下载软件安装包进行解压安装
+    cd ~/tools
+    wget https://github.com/DerrickWood/kraken2/archive/refs/tags/v2.1.3.tar.gz
+    tar -zxvf v2.1.3.tar.gz
+    cd kraken2-2.1.3/
+    sh install_kraken2.sh ~/tools/kraken2-2.1.3/
+
+    #使用conda进行软件安装
+    conda create -n kraken2
+    conda activate kraken2
+    conda install -y kraken2
+
+    #数据库配置
+    #直接使用kraken2自带脚本进行数据库下载
+    kraken2-build --standard --threads 24 --db ~/db/kraken2_db
+
+    #下载第三方构建的数据库直接使用，推荐网站：https://benlangmead.github.io/aws-indexes/k2
+    #多种kraken2数据库可选，更新及时，并且可直接选择后下载解压使用，此处下载standard数据库
+    cd ~/db
+    wget https://genome-idx.s3.amazonaws.com/kraken/k2_standard_20230605.tar.gz
+
+    #解压数据库到指定数据库位置
+    tar -zcvf k2_standard_20230605.tar.gz -C ~/db/k2_standard/
+
+    #查看软件版本:2.1.3
+    ~/tools/kraken2-2.1.3/bin/kraken2 --version
+
+## 2.2 长读序列功能注释
+### 安装abricate
+#直接使用conda安装abricate
+    #创建abricate单独的环境
+    conda create -n abricate
+    #激活abricate环境并进行软件安装，指定安装1.0.1版本，默认安装会安装低版本
+    conda activate abricate
+    conda install -y -c bioconda abricate=1.0.1
+
+    #查看abricate当前的数据库
+    abricate --list
+
+    #软件提供card和ncbi AMRFinder两个抗性数据库，首先更新已有的数据库
+    abricate-get_db --db ncbi #ncbi表示AMRFinder数据库
+    abricate-get_db --db card
+
+    #此外，也可自己下载相应的数据库，进行构建
+    #进入abricate数据库目录，若为conda或miniconda安装，则在conda目录下
+    cd /path/to/abricate/db
+    #创建数据库文件夹，并将fasta格式的数据库拷贝到文件夹内，重命名为sequences
+    mkdir your_database_name
+    cp /your/database/database.fasta your_database_name/sequences
+    #创建数据库，名称为 your_database_name
+    makeblastdb -in sequences -title your_database_name -dbtype nucl -hash_index
+
 # 2. 安装长读、混合宏基因组组装软件
 ## 2.1 安装长读宏基因组组装软件
 ### 安装MetaFlye
