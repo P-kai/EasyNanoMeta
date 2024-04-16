@@ -55,45 +55,45 @@
     # 如果安装不成功，可尝试使用pip的国内清华源安装nanopack，由于网络问题的失败，可多尝试几次。
     pip install -i https://pypi.tuna.tsinghua.edu.cn/simple nanopack 
 
-## 1.2 长读数据去宿主软件
-### 安装minimap2，samtools，bedtools
+## 1.2 Host DNA removal for long-read data (长读数据去宿主软件)
+### Install minimap2, samtools, and bedtools (安装minimap2，samtools，bedtools)
     conda create -y -n host_removal
     conda activate host_removal
     conda install -c bioconda minimap2
     conda install -c bioconda samtools
     conda install -c bioconda bedtools
 
-    #使用打包的conda package安装
-    #package下载：https://figshare.com/account/projects/201156/articles/25569159
+    # Install using conda package (使用打包的conda package安装)
+    # Conda package download (package下载：https://figshare.com/account/projects/201156/articles/25569159)
     mkdir ~/miniconda3/envs/host_removal/
     tar -xzvf host_removal.tar.gz -C ~/miniconda3/envs/host_removal/
     conda activate host_removal
     conda unpack
 
-## 1.3 短读数据质控软件
-### 安装fastp
+## 1.3 Quality control tools for short read data (短读数据质控软件)
+### fastp installation (安装fastp)
     conda install fastp
 
-## 1.4 数据格式转换：转换SRA数据到fastq格式
-### 安装fastq-dump
-    # 直接下载安装
+## 1.4 Data format conversion: Convert SRA data to fastq format (数据格式转换：转换SRA数据到fastq格式)
+### fastq-dump installation (安装fastq-dump)
+    # Manual installation (直接下载安装)
     cd ~/tools
-    #centos版本
+    # centos version (centos版本)
     wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.0.6/sratoolkit.3.0.6-centos_linux64.tar.gz
-    #ubuntu版本
+    # ubuntu version (ubuntu版本)
     wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.0.6/sratoolkit.3.0.6-ubuntu64.tar.gz
 
-    # 解压使用
+    # uncompress (解压使用)
     tar -zxvf sratoolkit.3.0.6-centos_linux64.tar.gz
     cd sratoolkit.3.0.6-centos_linux64
 
-    # 查看软件版本：3.0.6
+    # Check the software version: 3.0.6 (查看软件版本：3.0.6)
     ~/tools/sratoolkit.3.0.6-centos_linux64/bin/fastq-dump --version
 
-# 2. 安装基于长读序列的物种注释、功能注释软件
-## 2.1 长读序列物种注释
-### 安装centrifuge
-    #直接下载最新版本软件安装包，解压后编译
+# 2. Tools Installation for long-read data taxonomic and functional annotation (安装基于长读序列的物种注释、功能注释软件)
+## 2.1 Taxonomic annotation for long-read data (长读序列物种注释)
+### centrifuge installation (安装centrifuge)
+    # Download the latest software installation package, decompress and compile (直接下载最新版本软件安装包，解压后编译)
     cd ~/tools
     wget https://github.com/DaehwanKimLab/centrifuge/archive/refs/tags/v1.0.4.tar.gz
     tar -zxvf v1.0.4.tar.gz
@@ -101,47 +101,49 @@
     make
     make install prefix=~/tools/centrifuge-1.0.4
 
-    #使用git克隆到本地进行编译安装
+    # Download using git (使用git克隆到本地进行编译安装)
     git clone https://github.com/DaehwanKimLab/centrifuge
     cd centrifuge
     make
     make install prefix=~/tools/centrifuge-1.0.4
 
-    #数据库配置，进入存储数据库的文件夹，进行数据库下载
+    # Database download (数据库配置，进入存储数据库的文件夹，进行数据库下载)
     #h+p+v+c: human genome, prokaryotic genomes, and viral genomes including 106 SARS-CoV-2 complete genomes
     cd ~/db
     wget https://zenodo.org/record/3732127/files/h%2Bp%2Bv%2Bc.tar.gz?download=1
     tar -zxvf centrifuge_h+p+v.tar.gz
 
-    #查看软件版本：1.0.4
+    # Check the version (查看软件版本：1.0.4)
     ~/tools/centrifuge-1.0.4/centrifuge --version
 
-### 安装kraken2
-    #直接下载软件安装包进行解压安装
+### kraken2 installation (安装kraken2)
+    # Download the software installation package, decompress and compile (直接下载软件安装包进行解压安装)
     cd ~/tools
     wget https://github.com/DerrickWood/kraken2/archive/refs/tags/v2.1.3.tar.gz
     tar -zxvf v2.1.3.tar.gz
     cd kraken2-2.1.3/
     sh install_kraken2.sh ~/tools/kraken2-2.1.3/
 
-    #使用conda进行软件安装
+    # Install using conda (使用conda进行软件安装)
     conda create -n kraken2
     conda activate kraken2
     conda install -y kraken2
 
-    #数据库配置
-    #直接使用kraken2自带脚本进行数据库下载
+    # Database download (数据库配置)
+    # Create the standard Kraken 2 database (直接使用kraken2自带脚本进行数据库下载)
     kraken2-build --standard --threads 24 --db ~/db/kraken2_db
 
-    #下载第三方构建的数据库直接使用，推荐网站：https://benlangmead.github.io/aws-indexes/k2
-    #多种kraken2数据库可选，更新及时，并且可直接选择后下载解压使用，此处下载standard数据库
+    # Download third party building databases, recommend a site: https://benlangmead.github.io/aws-indexes/k2
+    # 下载第三方构建的数据库直接使用，推荐网站：https://benlangmead.github.io/aws-indexes/k2
+    # A variety of kraken2 databases available for download. Download the standard database here:
+    # 多种kraken2数据库可选，更新及时，并且可直接选择后下载解压使用，此处下载standard数据库:
     cd ~/db
     wget https://genome-idx.s3.amazonaws.com/kraken/k2_standard_20230605.tar.gz
 
-    #解压数据库到指定数据库位置
+    # tar the database to the specified database location (解压数据库到指定数据库位置)
     tar -zcvf k2_standard_20230605.tar.gz -C ~/db/k2_standard/
 
-    #查看软件版本:2.1.3
+    # Check version (查看软件版本:2.1.3)
     ~/tools/kraken2-2.1.3/bin/kraken2 --version
 
 ## 2.2 长读序列功能注释
