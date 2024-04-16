@@ -173,8 +173,8 @@
     #创建数据库，名称为 your_database_name
     makeblastdb -in sequences -title your_database_name -dbtype nucl -hash_index
 
-# 2. 安装长读、混合宏基因组组装软件
-## 2.1 安装长读宏基因组组装软件
+# 3. 安装长读、混合宏基因组组装软件
+## 3.1 安装长读宏基因组组装软件
 ### 安装MetaFlye
     # 软件下载
     cd ~/tools
@@ -219,7 +219,7 @@
     #查看软件版本：nextDenovo 2.5.2
     ~/tools/NextDenovo/nextDenovo --version
     
-## 2.2 安装长短读混合宏基因组组装软件
+## 3.2 安装长短读混合宏基因组组装软件
 ### 安装OPERA-MS
     #软件安装
     #使用conda配置软件安装单独环境，安装软件依赖的perl模块
@@ -297,8 +297,8 @@
     conda activate unicycler
     conda unpack
 
-# 3. 安装组装结果校准软件
-## 3.1 三代组装结果校准
+# 4. 安装组装结果校准软件
+## 4.1 三代组装结果校准
 ### 安装minimap2和recon
     #使用minimap2与racon进行组装基因组校准，若当前环境无minimap2与recon，则首先使用conda进行软件安装
     #使用conda安装minimap2与recon，已安装软件可跳过此步骤
@@ -320,7 +320,7 @@
     #查看软件版本：v1.4.1
     ~/tools/NextPolish/nextPolish --version
 
-## 3.2 二代或者二三代混合组装结果校准
+## 4.2 二代或者二三代混合组装结果校准
 ### 安装Pilon
     # 直接下载，然后使用java调用
     cd ~/tools
@@ -337,8 +337,8 @@
     #添加环境变量
     export PATH=~/tools/bwa:$PATH
 
-# 4. 安装宏基因组分箱软件
-## 4.1 纳米孔宏基因组分箱软件安装
+# 5. 安装宏基因组分箱软件
+## 5.1 纳米孔宏基因组分箱软件安装
 ### 安装SemiBin
     #使用conda创建单独的环境进行软件安装
     conda create -n SemiBin
@@ -389,8 +389,8 @@
     conda activate metawrap
     conda unpack
 
-# 5. 安装MAGs质控、物种注释、功能注释软件
-## 5.1 MAGs质控软件
+# 6. 安装MAGs质控、物种注释、功能注释软件
+## 6.1 MAGs质控软件
 ### 安装checkm
     # checkm已被整合到流程metawrap中，可直接激活metawrap环境进行使用
     # 也可使用conda创建环境单独安装checkm
@@ -434,7 +434,7 @@
     # 解压数据库
     tar -zxvf checkm2_database.tar.gz
 
-## 5.2 MAGs物种注释
+## 6.2 MAGs物种注释
 ### 安装gtdbtk
     # 使用conda进行软件安装
     conda create -n gtdbtk-2.2.6 -c conda-forge -c bioconda gtdbtk=2.2.6
@@ -452,11 +452,11 @@
     conda unpack
 
     # 配置软件数据库
-    mkdir -p ~/db/gtdbtk & cd ~/db/gtdbtk
+    mkdir -p ~/db/gtdbtk && cd ~/db/gtdbtk
     wget -c https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/auxillary_files/gtdbtk_data.tar.gz
     tar -zxvf gtdbtk_data.tar.gz
 
-## 5.3 MAGs功能注释
+## 6.3 MAGs功能注释
 ### 安装prokka
     # 使用conda安装prokka
     conda create -n prokka
