@@ -146,29 +146,30 @@
     # Check version (查看软件版本:2.1.3)
     ~/tools/kraken2-2.1.3/bin/kraken2 --version
 
-## 2.2 长读序列功能注释
-### 安装abricate
-#直接使用conda安装abricate
-    #创建abricate单独的环境
+## 2.2 Functional annotation for long-read data (长读序列功能注释)
+### abricate installation (安装abricate)
+    # install using conda (直接使用conda安装abricate)
+    # create a conda environment for abricate (创建abricate单独的环境)
     conda create -n abricate
-    #激活abricate环境并进行软件安装，指定安装1.0.1版本，默认安装会安装低版本
+    # Activate the abricate environment and install the software, specify the installation version 1.0.1, the default installation will install the lower version 
+    # 激活abricate环境并进行软件安装，指定安装1.0.1版本，默认安装会安装低版本
     conda activate abricate
     conda install -y -c bioconda abricate=1.0.1
 
-    #查看abricate当前的数据库
+    # check the databases (查看abricate当前的数据库)
     abricate --list
 
-    #软件提供card和ncbi AMRFinder两个抗性数据库，首先更新已有的数据库
-    abricate-get_db --db ncbi #ncbi表示AMRFinder数据库
+    # The software provides two ARGs databases, ncbi AMRFinder and card, and first updates the existing database (软件提供card和ncbi AMRFinder两个抗性数据库，首先更新已有的数据库)
+    abricate-get_db --db ncbi
     abricate-get_db --db card
 
-    #此外，也可自己下载相应的数据库，进行构建
-    #进入abricate数据库目录，若为conda或miniconda安装，则在conda目录下
+    # Alternative, we can make a custome database (此外，也可自己下载相应的数据库，进行构建)
+    # Enter the abricate database directory, in the conda directory if you are installing conda or miniconda (进入abricate数据库目录，若为conda或miniconda安装，则在conda目录下)
     cd /path/to/abricate/db
-    #创建数据库文件夹，并将fasta格式的数据库拷贝到文件夹内，重命名为sequences
+    # Create a folder and copy the fasta data into the folder and rename it sequences (创建数据库文件夹，并将fasta格式的数据库拷贝到文件夹内，重命名为sequences)
     mkdir your_database_name
     cp /your/database/database.fasta your_database_name/sequences
-    #创建数据库，名称为 your_database_name
+    # Create a database with the name your_database_name (创建数据库，名称为 your_database_name)
     makeblastdb -in sequences -title your_database_name -dbtype nucl -hash_index
 
 # 3. 安装长读、混合宏基因组组装软件
