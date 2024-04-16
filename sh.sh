@@ -1,4 +1,4 @@
-# 三代宏基因组分析流程EasyMetagenomePipeline
+# 三代宏基因组分析流程EasyNanoMeta
 
     # 版本: 1.01, 2023/7/20
     # 测试环境为CentOS 7.7
@@ -60,7 +60,9 @@
     ~/tools/sratoolkit.3.0.6-centos_linux64/bin/fastq-dump --split-3 ${i}
 
     # 批量处理样本，先生成脚本，再进行批量数据转换
-    ls > list && for i in `cat list`; do echo "~/tools/sratoolkit.3.0.6-centos_linux64/bin/fastq-dump --split-3 ${i}"; done > fastq-dump.sh
+    ls > list && for i in `cat list`; \
+    do echo "~/tools/sratoolkit.3.0.6-centos_linux64/bin/fastq-dump --split-3 ${i}"; \
+    done > fastq-dump.sh
     sh fastq-dump.sh
 
 # 二、对测试数据进行质控，过滤
@@ -83,7 +85,10 @@
     # 生成所有样本的名称
     ls *1.fastq && cut -f1 -d '.' > samples_name
     # 生成批量运行的脚本
-    for i in `cat samples_name`; do echo "porechop_abi --ab_initio -1 ${i}.fastq -o ${i}_output.fastq -t 24"; done > porechop_abi.sh
+    for i in `cat samples_name`; \
+    do echo "porechop_abi --ab_initio -1 ${i}.fastq -o ${i}_output.fastq -t 24"; \
+    done > porechop_abi.sh
+    # 运行批量执行脚本
     sh porechop_abi.sh
 
 ### 2.1.2 三代原始数据质量控制数据分布
