@@ -93,19 +93,22 @@
 
 ### 2.1.2 三代原始数据质量控制数据分布
 
-    #使用NanoPlot进行单样本的数据质控
+    # 使用NanoPlot进行单样本的数据质控
+    # 激活进入安装NanoPlot的conda环境
+    conda activate nanoplot
+    
     i=sample_name
-    /ifs1/User/yongxin/.local/bin/NanoPlot \
+    NanoPlot \
       -t 24 --N50 --huge -f svg --dpi 500 \
       --fastq ${i}.fastq \
       --plots kde dot \
       --title ${i} \
       -o ${i}
 
-    #使用NanoComp进行多样本数据质控
+    # 使用NanoComp进行多样本数据质控
     i1=sample_name1
     i2=sample_name2
-    /ifs1/User/yongxin/.local/bin/NanoComp --dpi 500 -t 24 -p prefix -f svg \
+    NanoComp --dpi 500 -t 24 -p prefix -f svg \
       --fastq ${i1}.fastq ${i2}.fastq \
       --names ${i1} ${i2} \
       -o NanoComp
@@ -113,20 +116,24 @@
 ### 2.1.3 三代原始数据去宿主，minimap2，samtools，bedtools连用
 
     #使用minimap2与samtools进行三代数据去宿主，以人肠道微生物组为例，进行人基因组污染去除
-    #下载人的参考基因组
+    #下载人的参考基因组到数据库文件夹下
+    cd ~/db
     wget https://ftp.ncbi.nih.gov/genomes/all/GCA/000/001/405/GCA_000001405.28_GRCh38.p13/
 
-    #建立minimap2比对索引，human基因组为参考对齐序列
+    # 进入去宿主的conda环境
+    conda activate host_removal
+    
+    # 建立minimap2比对索引，human基因组为参考对齐序列
     i=human_genome
     minimap2 -d ${i}.min ${i}.fasta
 
-    #使用minimap2进行数据比对
+    # 使用minimap2进行数据比对
     minimap2 -ax map-ont -t 24 ${i}.min ../raw.fasta -o minimap.sam
 
-    #提取未匹配到宿主的序列
+    # 提取未匹配到宿主的序列
     samtools view -bS -T -@24 ${i}.fasta -f 4 minimap.sam > unmaped_minimap.bam
 
-    #将bam文件转换为fastq文件，首先对bam文件进行排序，然后使用bedtools中的bamtofastq进行bam文件到fastq文件的转换
+    # 将bam文件转换为fastq文件，首先对bam文件进行排序，然后使用bedtools中的bamtofastq进行bam文件到fastq文件的转换
     samtools sort -n unmaped_minimap.bam -o unmaped_sorted_minimap.bam
     bedtools bamtofastq -i unmaped_sorted_minimap.bam -fq fitted_raw.fastq
 
