@@ -12,7 +12,7 @@ The main analysis pipeline for nanopore microbial sequences. This comprehensive 
 
 ## Pipeline manual and file description  
 1. Readme.md: Introduction  
-2. install.sh: Dependencies install. Using the script to install tools for nanopore metagenomic analysis.  
+2. install.sh: Dependencies installation. Using the script to install tools for nanopore metagenomic analysis.  
 3. pipeline.sh: Command-line analysis for Linux. A guidance for analyzing nanopore metagenomic data.
 4. Python scripts for data analysis: We provided many scripts for data processing.
 5. Rscripts_for_ploting: Examples for ploting using R.    
