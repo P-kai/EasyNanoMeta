@@ -46,13 +46,14 @@ The main analysis pipeline for nanopore microbial sequences. This comprehensive 
 **Gtdbtk** (https://ecogenomics.github.io/GTDBTk/index.html)  
 **Prokka** (https://github.com/tseemann/prokka)  
 
-## 1. A practical guidance for assembly-free long-read metagenomic data analysis
+## Practical guidances
+### 1. A practical guidance for assembly-free long-read metagenomic data analysis
 **Figure1**
 ![image](https://github.com/P-kai/EasyNanoMeta/blob/main/Figures/figure3.png)
 
 We used a set of datasets from WWTP to perform assembly-free analysis. After obtaining the taxonomic and resistance abundance tables, we can perform many statistical and visualization analyses, including composition, diversity, and correlation. (A) The workflow for assembly-free nanopore metagenomic data analysis. (B) The microbial compositions at the phylum level. The most abundant bacteria in AS and SIF were Proteobacteria. (C) The distribution of the top 20 abundant ARGs in different samples. ARGs in SIF samples are more abundant than in AS samples. (D) Alpha diversity analysis for microbial and ARG compositions. Alpha diversity showed that AS group has more abundant microbes but less abundant ARGs. (E) Beta diversity analysis for ARG compositions. PCoA based on Bray-Curtis showed that there is a significant difference in ARG compositions between AS and SIF. (F) The correlation analysis of microbial and ARG compositions. In the heat map, dark blue color blocks indicate positive correlations between different ARGs based on the Pearson Correlation Coefficient. The attachment of ARGs and the bacterial phylum indicate the correlation. (G) The correlation analysis of different ARGs based on their genetic context. The co-occurrence network diagram shows the correlation of different ARGs based on their genetic location. The nodes represent different ARGs. Connections between nodes indicate that they are related. The edge widths represent the correlation coefficient.
 
-## 2. A practical guidance for assembly-based long-read metagenomic data analysis
+### 2. A practical guidance for assembly-based long-read metagenomic data analysis
 **Figure2**
 ![image](https://github.com/P-kai/EasyNanoMeta/blob/main/Figures/figure4.png)
 
