@@ -69,14 +69,22 @@
 
 ### 2.1.1 三代原始数据去接头
     # 使用porechop_abi进行nanopore数据接头去除
+    # 激活软件所在环境
     conda activate porechop_abi
     # 设置输入样本名称
     i=sample_name
-    # 去除接头
+    # 使用默认参数去除接头
     porechop_abi --ab_initio \
       -i ${i}.fastq \
       -o ${i}_output.fastq \
       -t 24
+
+    # 批量处理样本
+    # 生成所有样本的名称
+    ls *1.fastq && cut -f1 -d '.' > samples_name
+    # 生成批量运行的脚本
+    for i in `cat samples_name`; do echo "porechop_abi --ab_initio -1 ${i}.fastq -o ${i}_output.fastq -t 24"; done > porechop_abi.sh
+    sh porechop_abi.sh
 
 ### 2.1.2 三代原始数据质量控制数据分布
 
