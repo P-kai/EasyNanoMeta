@@ -286,11 +286,11 @@
     conda activate unicycler
     conda install unicycler -c bioconda -y
 
-    #查看软件版本：Unicycler v0.5.0
+    # Check the version (查看软件版本)：Unicycler v0.5.0
     unicycler --version
 
-    #使用conda的package进行软件安装
-    #package下载：https://figshare.com/articles/software/Untitled_Item/25573875
+    # Install using conda package (使用conda的package进行软件安装)
+    # Conda package download (package下载)：https://figshare.com/articles/software/Untitled_Item/25573875
     cd ~/tools
     wget -c --no-check-certificate --no-proxy https://figshare.com/ndownloader/files/45563385 -O unicycler.tar.gz
     mkdir ~/miniconda3/envs/unicycler/
@@ -298,59 +298,58 @@
     conda activate unicycler
     conda unpack
 
-# 4. 安装组装结果校准软件
-## 4.1 三代组装结果校准
-### 安装minimap2和recon
-    #使用minimap2与racon进行组装基因组校准，若当前环境无minimap2与recon，则首先使用conda进行软件安装
-    #使用conda安装minimap2与recon，已安装软件可跳过此步骤
+# 4. Install genome polishing softwares (安装组装结果校准软件)
+## 4.1 Genome polishing for long-read metagenomic assemblies (三代组装结果校准)
+### Minimap2 and racon installation 安装minimap2和racon
+    # Install minimap2 and racon using conda (使用conda安装minimap2与racon，已安装软件可跳过此步骤)
     conda install -y minimap2
     conda install -y racon
 
-    #查看软件版本：minimap2 2.17-r943-dirty；
+    # Check the version (查看软件版本)：minimap2 2.17-r943-dirty；
     minimap2 --version
 
-### 安装NextPolish
-    #下载软件安装包，解压并编译
+### NextPolish installation (安装NextPolish)
+    # Download the software installation package, decompress and compile (下载软件安装包，解压并编译)
     cd ~/tools
     wget https://github.com/Nextomics/NextPolish/releases/latest/download/NextPolish.tgz
     tar -vxzf NextPolish.tgz && cd NextPolish && make
 
-    #安装软件依赖
+    # Install depandances (安装软件依赖)
     pip install paralleltask
 
-    #查看软件版本：v1.4.1
+    # Check the version (查看软件版本)：v1.4.1
     ~/tools/NextPolish/nextPolish --version
 
-## 4.2 二代或者二三代混合组装结果校准
-### 安装Pilon
-    # 直接下载，然后使用java调用
+## 4.2 Genome polishing for short-read assemblies and hybrid assemblies (二代或二三代混合组装结果校准)
+### Pilon installation (安装Pilon)
+    # Download and start with java jar (直接下载，然后使用java调用)
     cd ~/tools
     wget https://github.com/broadinstitute/pilon/releases/download/v1.24/pilon-1.24.jar
 
-    # 查看pilon版本：Pilon version 1.24 Thu Jan 28 13:00:45 2021 -0500
+    # Check the version (查看pilon版本)：Pilon version 1.24 Thu Jan 28 13:00:45 2021 -0500
     java -Xmx16G -jar ~/tools/pilon-1.24.jar --version
 
-### 安装bwa
-    # 使用git克隆bwa后编译
+### bwa installation (安装bwa)
+    # retrieve the Github files using git (使用git克隆bwa后编译)
     git clone https://github.com/lh3/bwa.git
     cd bwa && make
     
-    #添加环境变量
+    # Add PATH using export (添加环境变量)
     export PATH=~/tools/bwa:$PATH
 
-# 5. 安装宏基因组分箱软件
-## 5.1 纳米孔宏基因组分箱软件安装
-### 安装SemiBin
-    #使用conda创建单独的环境进行软件安装
+# 5. Software installation for metagenomic binning (安装宏基因组分箱软件)
+## 5.1 Install binners for nanopore metagenomic assemblies (纳米孔宏基因组分箱软件安装)
+### SemiBin installation (安装SemiBin)
+    # Create a separate conda environment and install the software using conda (使用conda创建单独的环境进行软件安装)
     conda create -n SemiBin
     conda activate SemiBin
     conda install -c conda-forge -c bioconda semibin
 
-    #查看软件版本：2.1.0
+    # Check the version (查看软件版本)：2.1.0
     SemiBin2 --version
 
-    #使用conda的package进行软件安装
-    #package下载：https://figshare.com/account/projects/201156/articles/25574010
+    # Install using conda package (使用conda的package进行软件安装)
+    # Conda package download (package下载)：https://figshare.com/account/projects/201156/articles/25574010
     cd ~/tools
     wget -c --no-check-certificate --no-proxy https://figshare.com/ndownloader/files/45563634 -O SemiBin.tar.gz
     mkdir ~/miniconda3/envs/SemiBin/
@@ -358,15 +357,15 @@
     conda activate SemiBin
     conda unpack
 
-### 安装vamb
-    #使用pip安装vamb
+### vamb installation (安装vamb)
+    # Install vamb using pip (使用pip安装vamb)
     pip install vamb -i https://pypi.tuna.tsinghua.edu.cn/simple
     
-    #查看软件版本：Vamb 4.1.3
+    # Check the version (查看软件版本)：Vamb 4.1.3
     vamb --version
 
-### 安装metawrap
-    #使用conda创建单独的环境进行软件安装
+### metawrap installation (安装metawrap)
+    # Create a separate conda environment and install the software using conda (使用conda创建单独的环境进行软件安装)
     conda create -y -n metawrap-env python=2.7
     conda activate metawrap-env
     
@@ -378,11 +377,11 @@
     conda install -y mamba 
     mamba install --only-deps -c ursky metawrap-mg
 
-    #查看软件版本：1.3.2
+    # Check the version (查看软件版本)：1.3.2
     metawrap --version
 
-    #使用conda的package进行软件安装
-    #package下载：https://figshare.com/articles/software/MetaWrap_1_3_2/25603155
+    # Install using conda package (使用conda的package进行软件安装)
+    # Conda package dowmload (package下载)：https://figshare.com/articles/software/MetaWrap_1_3_2/25603155
     cd ~/tools
     wget -c --no-check-certificate --no-proxy https://figshare.com/ndownloader/files/45651492 -O metawrap.tar.gz
     mkdir ~/miniconda3/envs/metawrap/
@@ -390,9 +389,10 @@
     conda activate metawrap
     conda unpack
 
-# 6. 安装MAGs质控、物种注释、功能注释软件
-## 6.1 MAGs质控软件
-### 安装checkm
+# 6. Software installation for MAGs quality control, taxonomy and functional annotation (安装MAGs质控、物种注释、功能注释软件)
+## 6.1 Software installation for MAGs quality control (MAGs质控软件)
+### Checkm installation (安装checkm)
+    # 
     # checkm已被整合到流程metawrap中，可直接激活metawrap环境进行使用
     # 也可使用conda创建环境单独安装checkm
     # 创建python=3.9的conda环境
