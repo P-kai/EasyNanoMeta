@@ -526,12 +526,8 @@
       -o bin_quant \
       -a ${i}.fa ${i}.fa_clean_1.fastq ${i}.fa_clean_2.fastq 
 
-
-#安装vamb
-pip install vamb -i https://pypi.tuna.tsinghua.edu.cn/simple
-/ifs1/User/yongxin/.local/bin #软件路径
-export PATH=$PATH:/ifs1/User/yongxin/.local/bin/ #临时添加软件路径到环境变量
-vamb --outdir canu_vamb --fasta canu.contigs.fasta --bamfiles canu.sorted.bam --minfasta 200000
+    # 使用vamb进行分箱
+    vamb --outdir canu_vamb --fasta canu.contigs.fasta --bamfiles canu.sorted.bam --minfasta 200000
 
 # 七、分箱结果的物种及功能注释
 
@@ -571,3 +567,9 @@ vamb --outdir canu_vamb --fasta canu.contigs.fasta --bamfiles canu.sorted.bam --
     gtdbtk convert_to_itol --input some_tree.tree --output itol.tree #转换进化树格式到itol
 
 ## 7.2 分箱结果MAG的功能注释
+    # 使用prokka进行MAGs的功能注释
+    i=sample_name
+    prokka ${i}.fa --prefix ${i} --outdir ~/prokka/${i}
+
+    # 使用abricate进行MAGs中耐药基因的注释
+    abricate --db ncbi --minid 80 --mincov 80 -t 12 *fa > ncbi_annotation_results
