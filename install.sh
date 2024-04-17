@@ -392,32 +392,32 @@
 # 6. Software installation for MAGs quality control, taxonomy and functional annotation (安装MAGs质控、物种注释、功能注释软件)
 ## 6.1 Software installation for MAGs quality control (MAGs质控软件)
 ### Checkm installation (安装checkm)
-    # 
+    # Checkm have been intergrated in metawrap workflow, we can use it in conda metawrap environment
     # checkm已被整合到流程metawrap中，可直接激活metawrap环境进行使用
-    # 也可使用conda创建环境单独安装checkm
-    # 创建python=3.9的conda环境
+    # Alternatively, we can also create a conda environment for checkm installation (也可使用conda创建环境单独安装checkm)
+    # Create a conda environment with python=3.9 (创建python=3.9的conda环境)
     conda create -n checkm python=3.9
     conda activate checkm
 
-    # 使用pip3安装checkm及其依赖环境
+    # Install checkm and its depandances using pip3 (使用pip3安装checkm及其依赖环境)
     pip3 install numpy
     pip3 install matplotlib
     pip3 install pysam
     pip3 install checkm-genome
 
-    # 查看软件版本：v1.2.2
+    # Check the version (查看软件版本)：v1.2.2
     checkm
 
-### 安装checkm2
-    # 使用conda安装checkm2
-    # 创建checkm2环境，注意python版本为3.8，否则可能安装失败
+### Checkm2 installation (安装checkm2)
+    # Install checkm2 using conda (使用conda安装checkm2)
+    # Create a separate conda environment with python=3.8 and install the software using conda (创建checkm2环境，注意python版本为3.8，否则可能安装失败)
     conda create -n checkm2 python=3.8
     conda activate checkm2
-    # 使用mamba安装
+    # Install checkm2 using mamba (使用mamba安装)
     mamba install -c bioconda -c conda-forge checkm2
 
-    # 使用conda的package进行软件安装
-    #package下载：https://figshare.com/account/projects/201156/articles/25621647
+    # Install using conda package (使用conda的package进行软件安装)
+    # Conda package download (package下载)：https://figshare.com/account/projects/201156/articles/25621647
     cd ~/tools
     wget -c --no-check-certificate --no-proxy https://figshare.com/ndownloader/files/45700833 -O checkm2.tar.gz
     mkdir ~/miniconda3/envs/checkm2/
