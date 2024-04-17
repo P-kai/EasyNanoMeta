@@ -178,7 +178,7 @@
     # Software download (软件下载)
     cd ~/tools
     wget https://github.com/fenderglass/Flye/archive/refs/tags/2.9.2.tar.gz
-    # uncompress (解压使用)
+    # Uncompress (解压使用)
     tar -zxvf Flye-2.9.2.tar.gz
     # Check the version (查看软件版本，版本：2.9.2-b1786)
     ~/tools/Flye-2.9.2/bin/flye --version
@@ -243,34 +243,35 @@
     #解决：寻找当前用户目录下有没有Switch.pm模块的安装 find ~/ -name "Switch.pm" 
     #将找到的模块写入perl路径中，例如： export PERL5LIB=~/perl5/lib/perl5/
 
-    # 配置OPERA-MS软件数据库
+    # Configure the database for OPERA-MS (配置OPERA-MS软件数据库)
     perl OPERA-MS.pl install-db 
 
-    #激活operams环境，查看软件版本：OPERA-MS v0.9.0
+    # Activate conda environment and check the version (激活operams环境，查看软件版本：OPERA-MS v0.9.0)
     conda activate operams
     perl ~/tools/OPERA-MS/OPERA-MS.pl
 
-### 安装MetaSPAdes
-    # 下载预编译的软件安装包，解压
+### MetaSPAdes installation (安装MetaSPAdes)
+    # Download and Uncompress (下载预编译的软件安装包，解压)
     cd ~/tools
     wget https://github.com/ablab/spades/releases/download/v3.15.5/SPAdes-3.15.5-Linux.tar.gz
     tar -zxvf SPAdes-3.15.5-Linux.tar.gz
 
-    #查看软件版本：SPAdes genome assembler v3.15.5
+    # Check the version (查看软件版本)：SPAdes genome assembler v3.15.5
     ~/tools/SPAdes-3.15.5-Linux/bin/spades.py --version
 
-### 安装MetaPlatanus
-    #使用conda进行软件安装
-    #使用conda创建软件安装单独环境，进入环境进行软件安装
+### MetaPlatanus installation (安装MetaPlatanus)
+    # Install MetaPlatanus using conda (使用conda进行软件安装)
+    # Create a separate conda environment to install MetaPlatanus 
+    # 使用conda创建软件安装单独环境，进入环境进行软件安装
     conda create -n metaplatanus -y
     conda activate metaplatanus
     conda install -c conda-forge -c bioconda metaplatanus
 
-    #查看软件版本：metaplatanus version v1.3.1
+    # Check the version (查看软件版本)：metaplatanus version v1.3.1
     metaplatanus --version
 
-    #使用conda的package进行软件安装
-    #package下载：https://figshare.com/account/projects/201156/articles/25573755
+    # Install using conda package (使用conda的package进行软件安装)
+    # Conda package download (package下载)：https://figshare.com/account/projects/201156/articles/25573755
     cd ~/tools
     wget -c --no-check-certificate --no-proxy https://figshare.com/ndownloader/files/45563190 -O metaplatanus.tar.gz
     mkdir ~/miniconda3/envs/metaplatanus/
@@ -278,9 +279,9 @@
     conda activate metaplatanus
     conda unpack
 
-### 安装Unicycler
-    #使用conda进行软件安装
-    #使用conda创建软件安装单独环境，进入环境进行软件安装
+### Unicycler installation (安装Unicycler)
+    # Install unicycler using conda (使用conda进行软件安装)
+    # Create a separate conda environment (使用conda创建软件安装单独环境，进入环境进行软件安装)
     onda create -n unicycler -y
     conda activate unicycler
     conda install unicycler -c bioconda -y
