@@ -425,17 +425,17 @@
     conda activate checkm2
     conda unpack
 
-    # 配置checkm2数据库
-    # 直接使用checkm2脚本进行数据库下载（经常失败，推荐使用wget）
+    # Configure the database for checkm2 (配置checkm2数据库)
+    # Configure the database using checkm2, fail frequently (直接使用checkm2脚本进行数据库下载（经常失败，推荐使用wget）)
     checkm2 database --download
     
-    # 使用wget进行数据库下载
+    # Download database using wget (使用wget进行数据库下载)
     mkdir ~/db/checkm2 && cd ~/db/checkm2
     wget https://zenodo.org/record/5571251/files/checkm2_database.tar.gz
-    # 解压数据库
+    # Decompress the database (解压数据库)
     tar -zxvf checkm2_database.tar.gz
 
-    # 查看软件版本: 1.0.1
+    # Check the version (查看软件版本): 1.0.1
     checkm2 --version
     
     # 运行软件时，加参数--database_path指定数据库位置，例如
@@ -445,16 +445,17 @@
     -x fa\
     --database_path ~/db/checkm2/CheckM2_database/uniref100.KO.1.dmnd
 
-## 6.2 MAGs物种注释
-### 安装gtdbtk
-    # 使用conda进行软件安装
+## 6.2 Taxonomic annotation for MAGs (MAGs物种注释)
+### Gtdbtk installation (安装gtdbtk)
+    # Install gtdbtk using conda (使用conda进行软件安装）
     conda create -n gtdbtk-2.2.6 -c conda-forge -c bioconda gtdbtk=2.2.6
-    # 查看软件版本: v2.2.6
+    
+    # Check the version (查看软件版本): v2.2.6
     conda activate gtdbtk-2.2.6
     gtdbtk --version
 
-    # 使用conda的package进行软件安装
-    #package下载：https://figshare.com/articles/software/Gtdbtk-2_2_6/25609425
+    # Install using conda package (使用conda的package进行软件安装)
+    # Conda package download (package下载)：https://figshare.com/articles/software/Gtdbtk-2_2_6/25609425
     cd ~/tools
     wget -c --no-check-certificate --no-proxy https://figshare.com/ndownloader/files/45672426 -O gtdbtk-2.2.6.tar.gz
     mkdir ~/miniconda3/envs/gtdbtk-2.2.6/
@@ -462,21 +463,21 @@
     conda activate gtdbtk-2.2.6
     conda unpack
 
-    # 配置软件数据库
+    # Configure the database (配置软件数据库)
     mkdir -p ~/db/gtdbtk && cd ~/db/gtdbtk
     wget -c https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/auxillary_files/gtdbtk_data.tar.gz
     tar -zxvf gtdbtk_data.tar.gz
-    # 设置数据库路径
+    # Set database path (设置数据库路径)
     export GTDBTK_DATA_PATH=~/db/gtdbtk/release214
 
-## 6.3 MAGs功能注释
-### 安装prokka
-    # 使用conda安装prokka
+## 6.3 Functional annotation for MAGs (MAGs功能注释)
+### Prokka installation (安装prokka)
+    # Install prokka using conda (使用conda安装prokka)
     conda create -n prokka
     conda install -c conda-forge -c bioconda -c defaults prokka
 
-    # 使用conda的package进行软件安装
-    #package下载：https://figshare.com/account/projects/201156/articles/25621605   
+    # Install using conda package (使用conda的package进行软件安装)
+    # Conda package download (package下载)：https://figshare.com/account/projects/201156/articles/25621605   
     cd ~/tools  
     wget -c --no-check-certificate --no-proxy https://figshare.com/ndownloader/files/45700677 -O prokka_roary.tar.gz
     mkdir ~/miniconda3/envs/prokka_roary/
@@ -484,5 +485,5 @@
     conda activate prokka_roary
     conda unpack
 
-    # 查看软件版本: 1.13
+    # Check the version (查看软件版本): 1.13
     prokka --version
