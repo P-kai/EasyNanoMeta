@@ -149,6 +149,16 @@
       -O ${i}_clean_2.fq.gz \
       -t 24
 
+    # 使用fastp批量处理样本
+    # 生成所有样本的名称
+    ls *1.fastq && cut -f1 -d '.' > samples_name
+    # 生成批量运行的脚本
+    for i in `cat samples_name`; \
+    do echo "fastp -i ${i}_1.fastq -I ${i}_2.fastq -o ${i}_clean_1.fastq -O ${i}_clean_2.fastq -t 24"; \
+    done > fastp.sh
+    # 运行批量执行脚本
+    sh porechop_abi.sh
+
 # 三、三代宏基因组原始数据物种及功能注释
 
 ## 3.1 三代宏基因组数据物种注释
