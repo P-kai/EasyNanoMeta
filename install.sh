@@ -332,7 +332,7 @@
 ### 安装bwa
     # 使用git克隆bwa后编译
     git clone https://github.com/lh3/bwa.git
-    cd bwa; make
+    cd bwa && make
     
     #添加环境变量
     export PATH=~/tools/bwa:$PATH
@@ -416,9 +416,9 @@
     mamba install -c bioconda -c conda-forge checkm2
 
     # 使用conda的package进行软件安装
-    #package下载：
+    #package下载：https://figshare.com/account/projects/201156/articles/25621647
     cd ~/tools
-    wget -c --no-check-certificate --no-proxy  -O checkm2.tar.gz
+    wget -c --no-check-certificate --no-proxy https://figshare.com/ndownloader/files/45700833 -O checkm2.tar.gz
     mkdir ~/miniconda3/envs/checkm2/
     tar -xzvf checkm2.tar.gz -C ~/miniconda3/envs/checkm2/
     conda activate checkm2
@@ -434,6 +434,16 @@
     # 解压数据库
     tar -zxvf checkm2_database.tar.gz
 
+    # 查看软件版本: 1.0.1
+    checkm2 --version
+    
+    # 运行软件时，加参数--database_path指定数据库位置，例如
+    checkm2 predict --threads 24\
+    --input bins \
+    --output-directory checkm2 \
+    -x fa\
+    --database_path ~/db/checkm2/CheckM2_database/uniref100.KO.1.dmnd
+
 ## 6.2 MAGs物种注释
 ### 安装gtdbtk
     # 使用conda进行软件安装
@@ -443,9 +453,9 @@
     gtdbtk --version
 
     # 使用conda的package进行软件安装
-    #package下载：
+    #package下载：https://figshare.com/articles/software/Gtdbtk-2_2_6/25609425
     cd ~/tools
-    wget -c --no-check-certificate --no-proxy  -O checkm2.tar.gz
+    wget -c --no-check-certificate --no-proxy https://figshare.com/ndownloader/files/45672426 -O gtdbtk-2.2.6.tar.gz
     mkdir ~/miniconda3/envs/gtdbtk-2.2.6/
     tar -xzvf gtdbtk-2.2.6.tar.gz -C ~/miniconda3/envs/gtdbtk-2.2.6/
     conda activate gtdbtk-2.2.6
@@ -455,9 +465,23 @@
     mkdir -p ~/db/gtdbtk && cd ~/db/gtdbtk
     wget -c https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/auxillary_files/gtdbtk_data.tar.gz
     tar -zxvf gtdbtk_data.tar.gz
+    # 设置数据库路径
+    export GTDBTK_DATA_PATH=~/db/gtdbtk/release214
 
 ## 6.3 MAGs功能注释
 ### 安装prokka
     # 使用conda安装prokka
     conda create -n prokka
     conda install -c conda-forge -c bioconda -c defaults prokka
+
+    # 使用conda的package进行软件安装
+    #package下载：https://figshare.com/account/projects/201156/articles/25621605   
+    cd ~/tools  
+    wget -c --no-check-certificate --no-proxy https://figshare.com/ndownloader/files/45700677 -O prokka_roary.tar.gz
+    mkdir ~/miniconda3/envs/prokka_roary/
+    tar -xzvf prokka_roary.tar.gz -C ~/miniconda3/envs/prokka_roary/
+    conda activate prokka_roary
+    conda unpack
+
+    # 查看软件版本: 1.13
+    prokka --version
