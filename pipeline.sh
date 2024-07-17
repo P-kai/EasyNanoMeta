@@ -444,7 +444,7 @@
 
     #使用长读、短读数据进行组装基因组校准，首先生成短读、长读数据文件位置
     ls reads1.fq reads2.fa.gz > sgs.fofn
-    ls reads1.fq reads2.fa.gz > lgs.fofn
+    ls long_reads.fq > lgs.fofn
 
     #编辑组装结果校准执行文件，配置软件执行参数
     vim run.cfg  
