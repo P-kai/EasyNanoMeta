@@ -11,10 +11,10 @@ With the widespread application of nanopore sequencing in microbiology, there ha
 This comprehensive statement encompasses the various steps involved in the analysis process, along with the corresponding tools employed. The initial step in analyzing nanopore sequencing data involves data quality control, including basecalling, filtering and host sequences removal. Then, the the main steps of nanopore metagenomic data analysis were summarized into assembly-free strategy and assembly-based strategy. Assembly-free long-read metagenomic profiling can quickly estimate the abundance of species and functional genes employing few computing resources. In comparison, assembly-based nanopore metagenomic data analysis enable us to study more high-quality MAGs and their functions.
 
 ## How to use?  
-1. Readme.md: Introduction  
-2. install.sh: Dependencies installation. Using the script to install tools for nanopore metagenomic analysis.  
-3. pipeline.sh: Command-line analysis for Linux. A guidance for analyzing nanopore metagenomic data.
-4. Python scripts for data analysis: We provided many scripts for data processing.
+#1. Readme.md: Introduction  
+#2. install.sh: Dependencies installation. Using the script to install tools for nanopore metagenomic analysis.  
+#3. pipeline.sh: Command-line analysis for Linux. A guidance for analyzing nanopore metagenomic data.
+#4. Python scripts for data analysis: We provided many scripts for data processing.
 
 ``$ python abundance_calculate.py --help``  
 ``usage: abundance_calculate.py [-h] [--i I] [--data_size DATA_SIZE] [--title TITLE] [--p P] [--output OUTPUT]``  
@@ -55,33 +55,33 @@ This comprehensive statement encompasses the various steps involved in the analy
 ``                        Dataframes.``  
 ``
 ``$ python Extracting_MAGs.py -h``    
-``usage: test2.py [-h] [--flye FLYE] [--threads THREADS] --rawlong RAWLONG --rawshort1 RAWSHORT1 --rawshort2 RAWSHORT2``    
-``                [--nextpolish NEXTPOLISH] [--semibin SEMIBIN] [--checkm2 CHECKM2] [--checkm2_database CHECKM2_DATABASE]``    
-``                [--gtdbtk GTDBTK] [--gtdbtk_database GTDBTK_DATABASE]``    
+``  usage: test2.py [-h] [--flye FLYE] [--threads THREADS] --rawlong RAWLONG --rawshort1 RAWSHORT1 --rawshort2 RAWSHORT2``    
+``                  [--nextpolish NEXTPOLISH] [--semibin SEMIBIN] [--checkm2 CHECKM2] [--checkm2_database CHECKM2_DATABASE]``    
+``                  [--gtdbtk GTDBTK] [--gtdbtk_database GTDBTK_DATABASE]``    
 ``  
-``Main script to run multiple bioinformatics tools.``  
+`` Main script to run multiple bioinformatics tools.``  
 ``  
-options:  
-  -h, --help            show this help message and exit  
-  --flye FLYE           Path to Flye executable (default: /Tools/software/Flye-2021-2.9/bin/flye).  
-  --threads THREADS     Number of threads for MetaFlye.  
-  --rawlong RAWLONG     Input raw long-read file.  
-  --rawshort1 RAWSHORT1  
-                        Input raw short-read1 file.  
-  --rawshort2 RAWSHORT2  
-                        Input raw short-read2 file.  
-  --nextpolish NEXTPOLISH  
-                        Path to NextPolish executable (default: /home/tools_pk/tools/NextPolish/nextPolish)
-  --semibin SEMIBIN     Path to SemiBin executable (default: /home/tools_pk/miniconda3/envs/SemiBin/bin/SemiBin).
-  --checkm2 CHECKM2     Path to the CheckM2 executable (default: /home/tools_pk/miniconda3/envs/checkm2/bin/checkm2).
-  --checkm2_database CHECKM2_DATABASE
-                        Path to the CheckM2 database (default:
-                        /home/tools_pk/databases/checkm2/CheckM2_database/uniref100.KO.1.dmnd).
-  --gtdbtk GTDBTK       Path to the GTDB-Tk executable (default: /home/tools_pk/miniconda3/envs/gtdbtk/bin/gtdbtk).
-  --gtdbtk_database GTDBTK_DATABASE
-                        Path to the GTDB-Tk database (default: /backup/database/gtdbtk/release214). 
+``options:``  
+``  -h, --help            show this help message and exit``  
+``  --flye FLYE           Path to Flye executable (default: /Tools/software/Flye-2021-2.9/bin/flye).  ``  
+``  --threads THREADS     Number of threads for MetaFlye.  ``  
+``  --rawlong RAWLONG     Input raw long-read file.  ``  
+``  --rawshort1 RAWSHORT1  ``  
+``                        Input raw short-read1 file.  ``  
+``  --rawshort2 RAWSHORT2  ``  
+``                        Input raw short-read2 file.  ``  
+``  --nextpolish NEXTPOLISH  ``  
+``                        Path to NextPolish executable (default: /home/tools_pk/tools/NextPolish/nextPolish)``  
+``  --semibin SEMIBIN     Path to SemiBin executable (default: /home/tools_pk/miniconda3/envs/SemiBin/bin/SemiBin).``  
+``  --checkm2 CHECKM2     Path to the CheckM2 executable (default: /home/tools_pk/miniconda3/envs/checkm2/bin/checkm2).``  
+``  --checkm2_database CHECKM2_DATABASE``  
+``                        Path to the CheckM2 database (default:``  
+``                        /home/tools_pk/databases/checkm2/CheckM2_database/uniref100.KO.1.dmnd).``  
+``  --gtdbtk GTDBTK       Path to the GTDB-Tk executable (default: /home/tools_pk/miniconda3/envs/gtdbtk/bin/gtdbtk).``  
+``  --gtdbtk_database GTDBTK_DATABASE``  
+``                        Path to the GTDB-Tk database (default: /backup/database/gtdbtk/release214). ``  
 
-6. Rscripts_for_ploting: Examples for ploting using R.    
+#5. Rscripts_for_ploting: Examples for ploting using R.    
 
 ## Dependencies
 **Miniconda3** (https://docs.anaconda.com/free/miniconda/index.html)  
