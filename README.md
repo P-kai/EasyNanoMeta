@@ -58,29 +58,36 @@ For examples:
 ### 5. Rscripts_for_ploting: Examples for ploting using R.    
 
 ## Dependencies
+### Software management
 **Miniconda3** (https://docs.anaconda.com/free/miniconda/index.html)  
+### Host removal and quality control
 **Minimap2** (https://github.com/lh3/minimap2)  
 **samtools** (https://github.com/samtools/samtools)  
 **bedtools** (https://github.com/arq5x/bedtools2)  
 **fastp** (https://github.com/OpenGene/fastp)  
+### Taxonomic and functional composition identification
 **Centrifuge** (http://www.ccb.jhu.edu/software/centrifuge)  
 **Kraken2** (https://github.com/DerrickWood/kraken2)  
 **Abricate** (https://github.com/tseemann/abricate)  
+### Long-read metagenomic assembly
 **MetaFlye** (https://github.com/fenderglass/Flye)  
 **Canu** (https://github.com/marbl/canu)  
 **wtdbg2** (https://github.com/ruanjue/wtdbg2)  
 **NextDenove** (https://github.com/Nextomics/NextDenovo)  
+### Hybrid metagenomic assembly
 **OPERA-MS** (https://github.com/CSB5/OPERA-MS)  
 **MetaSPAdes** (https://github.com/ablab/spades)  
 **MetaPlatanus** (https://github.com/rkajitani/MetaPlatanus)  
 **Unicycler** (https://github.com/rrwick/Unicycler)  
-**Racon** (https://github.com/isovic/racon)  
+### Polishing  
 **NextPolish** (https://github.com/Nextomics/NextPolish)  
 **Pilon** (https://github.com/broadinstitute/pilon)  
+### Binning
 **bwa** (https://github.com/lh3/bwa)  
 **Semibin** (https://github.com/BigDataBiology/SemiBin)  
 **vamb** (https://github.com/RasmussenLab/vamb)  
 **MetaWrap** (https://github.com/bxlab/metaWRAP)  
+### Annotation
 **Checkm** (https://github.com/Ecogenomics/CheckM)  
 **Checkm2** (https://github.com/chklovski/CheckM2)  
 **Gtdbtk** (https://ecogenomics.github.io/GTDBTk/index.html)  
@@ -106,3 +113,9 @@ Long-read metagenomic assembly was performed with MetaFlye, Canu, NextDenove and
 
 **The influence of different assembly strategies on the accuracy of MAGs**   
 We used four hybrid assembly strategies and four long-read assembly strategies to perform metagenomic assembly of a Mock2 dataset. The long-read assemblies were polished with long-read data and combined with long-read and short-read data. The suffix “lp” indicates long-read polishing. The suffix “slp” indicates short-read and long-read polishing. After that, we extracted MAGs from different assemblies and compared MAGs with reference genomes. (A) Workflow for assessing the quality of MAGs. We compared the MAGs recovered using different analysis strategies with reference genomes to assess the quality of MAGs. (B) The genome size difference between MAGs and reference genomes. “SE”, “SA”, “PA”, “LM”, “LF”, “EF”, “EC” and “BS” is the abbreviation of bacterial species in Mock2 dataset (Table S4). The assembly strategies have no significant influence on the genome size of MAGs. (C) The single-base error rate of MAGs compared with reference genomes. MAGs from MetaSPAdes assemblies have the highest single-base error rate of the four hybrid assembly strategies. The single base error rate of MAGs from long-read assemblies is significantly higher than that of hybrid assemblies. After being polished with long reads, the accuracy of MAGs has shown a slight improvement. Comparatively, the accuracy of MAGs is significantly improved after short-read and long-read polishing. (D) The number of breakpoints found in different MAGs. Long-read assembly strategies could produce more complete MAGs compared with hybrid assembly strategies. (E) The mean predicted gene length in different MAGs. Due to the high error rate, the mean gene length in MAGs from long-read assemblies is significantly shorter than in MAGs from hybrid assemblies. After short-read and long-read polishing, the mean predicted gene length is comparable to the mean gene length in MAGs from hybrid assemblies.
+
+
+### Citation
+Benchmarking Analysis Tools and Developing Pipelines for Nanopore Long-Read Metagenomics: From One Health Perspective(Pending)
+
+Copyright 2023-2026 Kai Peng 008719@yzu.edu.cn
