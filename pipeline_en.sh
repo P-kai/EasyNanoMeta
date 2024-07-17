@@ -209,7 +209,7 @@
     # Activate conda environment
     conda activate abricate
 
-    # Download the latest insertion sequence database and build the local database, download address£ºhttps://raw.githubusercontent.com/thanhleviet/ISfinder-sequences/master/IS.fna
+    # Download the latest insertion sequence database and build the local database, download addressÂ£Âºhttps://raw.githubusercontent.com/thanhleviet/ISfinder-sequences/master/IS.fna
     # Enter the abricate database directory, and if it is installed in Conda or Miniconda, then in the Conda directory
     cd /path/to/abricate/db
     # Create an ISfinder folder and copy the fasta format database into the folder, rename it to sequences
@@ -445,7 +445,7 @@
     # Calibrate third-generation metagenome assembly result with long-read and short-read metagenomic raw data
     # Generate file locations of long-read and short-read metagenomic data for calibration of third-generation metagenome assembly result
     ls reads1.fq reads2.fa.gz > sgs.fofn
-    ls reads1.fq reads2.fa.gz > lgs.fofn
+    ls raw_nanopore.gz > lgs.fofn
 
     # Edit executable file of assembly result calibration and configure the software execution parameters
     vim run.cfg  
@@ -522,7 +522,7 @@
     metawrap binning --metabat2 --maxbin2 --concoct -t 48 --run-checkm -a ${i}.fa -o bin ${i}_clean_1.fastq ${i}_clean_2.fastq
 
  ## 6.3 Binning purify and quantification of third-generation metagenome assembly result
-    # Software£ºmetawrap
+    # SoftwareÂ£Âºmetawrap
     # Use metawrap for Binning purification, with parameters of integrity greater than 80% and contamination less than 10%
     metawrap bin_refinement \
       -A maxbin2_bins/ \
