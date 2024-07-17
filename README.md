@@ -15,18 +15,19 @@ This comprehensive statement encompasses the various steps involved in the analy
 2. install.sh: Dependencies installation. Using the script to install tools for nanopore metagenomic analysis.  
 3. pipeline.sh: Command-line analysis for Linux. A guidance for analyzing nanopore metagenomic data.
 4. Python scripts for data analysis: We provided many scripts for data processing.
-$ python abundance_calculate.py --help
-usage: abundance_calculate.py [-h] [--i I] [--data_size DATA_SIZE] [--title TITLE] [--p P] [--output OUTPUT]
 
-options:
-  -h, --help            show this help message and exit
-  --i I, -i I           Input data.
-  --data_size DATA_SIZE, -d DATA_SIZE
-                        --data_size, -d
-  --title TITLE
-  --p P, -p P           The prefix of result.
-  --output OUTPUT, -o OUTPUT
-                        Output direction.
+``$ python abundance_calculate.py --help``
+``usage: abundance_calculate.py [-h] [--i I] [--data_size DATA_SIZE] [--title TITLE] [--p P] [--output OUTPUT]``
+
+``options:``
+``  -h, --help            show this help message and exit``
+``  --i I, -i I           Input data.``
+``  --data_size DATA_SIZE, -d DATA_SIZE``
+``                        --data_size, -d``
+``  --title TITLE``
+``  --p P, -p P           The prefix of result.``
+``  --output OUTPUT, -o OUTPUT``
+``                        Output direction.``
 
 $ python co-located.py --help
 usage: co-located.py [-h] [--i I]
