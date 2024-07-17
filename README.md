@@ -12,10 +12,11 @@ This comprehensive statement encompasses the various steps involved in the analy
 
 ## How to use?  
 ### 1. Readme.md: Introduction  
-### 2. install.sh: Dependencies installation. Using the script to install tools for nanopore metagenomic analysis.  
+### 2. install.sh: Dependencies installation. Folowing the script to install tools for nanopore metagenomic analysis.  
 ### 3. pipeline.sh: Command-line analysis for Linux. A guidance for analyzing nanopore metagenomic data.  
 ### 4. Python scripts for data analysis: We provided many scripts for data processing.  
 For examples:  
+Functional gene abundance calculation:  
 ``$ python abundance_calculate.py --help``  
 ``usage: abundance_calculate.py [-h] [--i I] [--data_size DATA_SIZE] [--title TITLE] [--p P] [--output OUTPUT]``  
 
@@ -29,13 +30,15 @@ For examples:
 ``  --output OUTPUT, -o OUTPUT``  
 ``                        Output direction.``  
 
+Co-located analysis:  
 ``$ python co-located.py --help``  
 ``usage: co-located.py [-h] [--i I]``  
   
 ``options:``  
 ``  -h, --help  show this help message and exit``  
 ``  --i I``  
-  
+
+Merge multiple tables:  
 ``$ python merge_tables.py -h``  
 ``usage: merge_tables.py [-h] [--input_dir INPUT_DIR] [--identifier IDENTIFIER]``  
 ``                       [--prefix PREFIX] [--output OUTPUT] [--column COLUMN]``  
