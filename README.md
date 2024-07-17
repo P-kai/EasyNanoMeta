@@ -1,7 +1,5 @@
 [TOC]
 
-@[toc]
-
 # EasyNanoMeta:A pipeline for nanopore long-read metagenomic analysis
 
 With the widespread application of nanopore sequencing in microbiology, there has been a significant increase in the generation of long-read sequencing data. This poses a challenge in effectively mining valuable biological information from the vast amount of nanopore sequencing data using bioinformatics tools. Here, we systematically summarizes bioinformatics analysis methods for nanopore long-read metagenomics, validating the practical implementation of these workflows using various simulated and experimental datasets from a one health perspective. In addition, we comprehensively evaluated the performance and computational requirements of various bioinformatic tools.
