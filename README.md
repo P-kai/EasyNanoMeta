@@ -11,10 +11,10 @@ With the widespread application of nanopore sequencing in microbiology, there ha
 This comprehensive statement encompasses the various steps involved in the analysis process, along with the corresponding tools employed. The initial step in analyzing nanopore sequencing data involves data quality control, including basecalling, filtering and host sequences removal. Then, the the main steps of nanopore metagenomic data analysis were summarized into assembly-free strategy and assembly-based strategy. Assembly-free long-read metagenomic profiling can quickly estimate the abundance of species and functional genes employing few computing resources. In comparison, assembly-based nanopore metagenomic data analysis enable us to study more high-quality MAGs and their functions.
 
 ## How to use?  
-#1. Readme.md: Introduction  
-#2. install.sh: Dependencies installation. Using the script to install tools for nanopore metagenomic analysis.  
-#3. pipeline.sh: Command-line analysis for Linux. A guidance for analyzing nanopore metagenomic data.  
-#4. Python scripts for data analysis: We provided many scripts for data processing.  
+### 1. Readme.md: Introduction  
+### 2. install.sh: Dependencies installation. Using the script to install tools for nanopore metagenomic analysis.  
+### 3. pipeline.sh: Command-line analysis for Linux. A guidance for analyzing nanopore metagenomic data.  
+### 4. Python scripts for data analysis: We provided many scripts for data processing.  
 
 ``$ python abundance_calculate.py --help``  
 ``usage: abundance_calculate.py [-h] [--i I] [--data_size DATA_SIZE] [--title TITLE] [--p P] [--output OUTPUT]``  
@@ -81,7 +81,7 @@ This comprehensive statement encompasses the various steps involved in the analy
 ``  --gtdbtk_database GTDBTK_DATABASE``  
 ``                        Path to the GTDB-Tk database (default: /backup/database/gtdbtk/release214). ``  
 
-#5. Rscripts_for_ploting: Examples for ploting using R.    
+### 5. Rscripts_for_ploting: Examples for ploting using R.    
 
 ## Dependencies
 **Miniconda3** (https://docs.anaconda.com/free/miniconda/index.html)  
