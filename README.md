@@ -36,7 +36,7 @@ This comprehensive statement encompasses the various steps involved in the analy
 ``  -h, --help  show this help message and exit``  
 ``  --i I``  
   
-``$ python3 merge_tables.py -h``  
+``$ python merge_tables.py -h``  
 ``usage: merge_tables.py [-h] [--input_dir INPUT_DIR] [--identifier IDENTIFIER]``  
 ``                       [--prefix PREFIX] [--output OUTPUT] [--column COLUMN]``  
 
@@ -54,9 +54,9 @@ This comprehensive statement encompasses the various steps involved in the analy
 ``                        Column name used as the key for merging between``  
 ``                        Dataframes.``  
 ``
-``Extracting_MAGs.py -h``  
-``usage: test2.py [-h] [--flye FLYE] [--threads THREADS] --rawlong RAWLONG --rawshort1 RAWSHORT1 --rawshort2 RAWSHORT2``  
-``                [--nextpolish NEXTPOLISH] [--semibin SEMIBIN] [--checkm2 CHECKM2] [--checkm2_database CHECKM2_DATABASE]``  
+``$ python Extracting_MAGs.py -h``     
+``usage: test2.py [-h] [--flye FLYE] [--threads THREADS] --rawlong RAWLONG --rawshort1 RAWSHORT1 --rawshort2 RAWSHORT2``     
+``                [--nextpolish NEXTPOLISH] [--semibin SEMIBIN] [--checkm2 CHECKM2] [--checkm2_database CHECKM2_DATABASE]``     
 ``                [--gtdbtk GTDBTK] [--gtdbtk_database GTDBTK_DATABASE]``  
 ``  
 ``Main script to run multiple bioinformatics tools.``  
