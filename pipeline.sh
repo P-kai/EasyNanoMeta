@@ -118,7 +118,7 @@
     #使用minimap2与samtools进行三代数据去宿主，以人肠道微生物组为例，进行人基因组污染去除
     #下载人的参考基因组到数据库文件夹下
     cd ~/db
-    wget https://ftp.ncbi.nih.gov/genomes/all/GCA/000/001/405/GCA_000001405.28_GRCh38.p13/
+    https://ftp.ncbi.nih.gov/genomes/all/GCA/000/001/405/GCA_000001405.28_GRCh38.p13/GCA_000001405.28_GRCh38.p13_genomic.fna.gz
 
     # 进入去宿主的conda环境
     conda activate host_removal
