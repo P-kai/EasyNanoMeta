@@ -495,11 +495,28 @@
 
     #注意，使用pilon校准组装结果，一般进行多轮校准，推荐3-4轮
 
-# 六、三代宏基因组组装结果分箱及分箱提纯、重组装分析
+# 六、三代宏基因组组装结果功能注释
 
-## 6.1 纯三代宏基因组组装结果分箱
+## 6.1 组装结果的功能注释
 
-### 6.1.1 使用SemiBin进行三代宏基因组组装结果分箱
+### 6.1.1 使用eggnog-mapper进行功能注释
+
+    #软件使用
+    #设置eggnog的数据库位置
+    export EGGNOG_DATA_DIR=/your/database/path/eggnog-mapper/
+    #对组装结果进行功能注释
+    i=sample_name
+    conda activate eggnog-mapper
+    emapper.py -i ${i}.fasta \
+    -o ${i} \
+    --itype metagenome \
+    --cpu 24
+
+# 七、三代宏基因组组装结果分箱及分箱提纯、重组装分析
+
+## 7.1 纯三代宏基因组组装结果分箱
+
+### 7.1.1 使用SemiBin进行三代宏基因组组装结果分箱
 
     #软件使用
     #首先对组装基因组进行索引创建，获取排序的bam文件
@@ -512,15 +529,15 @@
     #使用SemiBin运行bin
     SemiBin single_easy_bin -i ${i}.fasta  --sequencing-type long_read -b ${i}.sorted.bam -o bin_output --environment global 
 
-## 6.2 二三代宏基因组混合组装结果分箱
+## 7.2 二三代宏基因组混合组装结果分箱
 
-### 6.2.1 使用metawrap进行二三代宏基因组组装结果分箱
+### 7.2.1 使用metawrap进行二三代宏基因组组装结果分箱
     #使用metawrap里面的分箱模式进行二三代宏基因组组装数据分箱
     #运行分箱，原始数据为二代数据，格式必须为*_1.fastq；*_2.fastq
     i=sample_name
     metawrap binning --metabat2 --maxbin2 --concoct -t 48 --run-checkm -a ${i}.fa -o bin ${i}_clean_1.fastq ${i}_clean_2.fastq
 
- ## 6.3 宏基因组组装结果分箱提纯及定量
+ ## 7.3 宏基因组组装结果分箱提纯及定量
     #软件：metawrap
     #使用metawrap进行分箱提纯，参数为完整度大于80%，污染小于10%
     metawrap bin_refinement \
@@ -539,11 +556,11 @@
     # 使用vamb进行分箱
     vamb --outdir canu_vamb --fasta canu.contigs.fasta --bamfiles canu.sorted.bam --minfasta 200000
 
-# 七、分箱结果的物种及功能注释
+# 八、分箱结果的物种及功能注释
 
-## 7.1 分箱结果MAG的物种注释
+## 8.1 分箱结果MAG的物种注释
 
-### 7.1.1 使用GTDB-Tk进行MAG的基因组物种注释
+### 8.1.1 使用GTDB-Tk进行MAG的基因组物种注释
     #MAG基因组分类及注释软件GTDB-Tk
     #使用conda创建新的环境并安装GTDB-Tk
     conda create -n gtdbtk-2.1.1 -c conda-forge -c bioconda gtdbtk=2.1.1 
@@ -576,7 +593,7 @@
     gtdbtk classify_wf --genome_dir maxbin2_bins/ --extension fa  --skip_ani_screen --out_dir gtdbtk 
     gtdbtk convert_to_itol --input some_tree.tree --output itol.tree #转换进化树格式到itol
 
-## 7.2 分箱结果MAG的功能注释
+## 8.2 分箱结果MAG的功能注释
     # 使用prokka进行MAGs的功能注释
     i=sample_name
     prokka ${i}.fa --prefix ${i} --outdir ~/prokka/${i}
