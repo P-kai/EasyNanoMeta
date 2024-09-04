@@ -337,8 +337,22 @@
     # Add PATH using export (添加环境变量)
     export PATH=~/tools/bwa:$PATH
 
-# 5. Software installation for metagenomic binning (安装宏基因组分箱软件)
-## 5.1 Install binners for nanopore metagenomic assemblies (纳米孔宏基因组分箱软件安装)
+# 5. Software installation for metagenomic assemblers functional annotation (安装宏基因组组装结果功能注释软件)
+## 5.1 Install eggnog-mapper for functional annotation (宏基因组功能注释软件eggnog-mapper安装)
+    # Create a separate conda environment and install the software using conda (使用conda创建单独的环境进行软件安装)
+    conda create -n eggnog-mapper
+    conda activate eggnog-mapper
+    conda install eggnogmapper
+
+    # Check version (查看软件版本)
+    emapper.py --version
+
+    # Download database(数据库下载)
+     mkdir ~/db/eggnog-mapper && cd ~/db/eggnog-mapper
+     download_eggnog_data.py --data_dir ~/db/eggnog-mapper -y -f -P -M -H -d taxid
+
+# 6. Software installation for metagenomic binning (安装宏基因组分箱软件)
+## 6.1 Install binners for nanopore metagenomic assemblies (纳米孔宏基因组分箱软件安装)
 ### SemiBin installation (安装SemiBin)
     # Create a separate conda environment and install the software using conda (使用conda创建单独的环境进行软件安装)
     conda create -n SemiBin
@@ -389,8 +403,8 @@
     conda activate metawrap
     conda unpack
 
-# 6. Software installation for MAGs quality control, taxonomy and functional annotation (安装MAGs质控、物种注释、功能注释软件)
-## 6.1 Software installation for MAGs quality control (MAGs质控软件)
+# 7. Software installation for MAGs quality control, taxonomy and functional annotation (安装MAGs质控、物种注释、功能注释软件)
+## 7.1 Software installation for MAGs quality control (MAGs质控软件)
 ### Checkm installation (安装checkm)
     # Checkm have been intergrated in metawrap workflow, we can use it in conda metawrap environment
     # checkm已被整合到流程metawrap中，可直接激活metawrap环境进行使用
@@ -445,7 +459,7 @@
     -x fa\
     --database_path ~/db/checkm2/CheckM2_database/uniref100.KO.1.dmnd
 
-## 6.2 Taxonomic annotation for MAGs (MAGs物种注释)
+## 7.2 Taxonomic annotation for MAGs (MAGs物种注释)
 ### Gtdbtk installation (安装gtdbtk)
     # Install gtdbtk using conda (使用conda进行软件安装）
     conda create -n gtdbtk-2.2.6 -c conda-forge -c bioconda gtdbtk=2.2.6
@@ -470,7 +484,7 @@
     # Set database path (设置数据库路径)
     export GTDBTK_DATA_PATH=~/db/gtdbtk/release214
 
-## 6.3 Functional annotation for MAGs (MAGs功能注释)
+## 7.3 Functional annotation for MAGs (MAGs功能注释)
 ### Prokka installation (安装prokka)
     # Install prokka using conda (使用conda安装prokka)
     conda create -n prokka
