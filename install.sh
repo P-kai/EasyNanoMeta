@@ -351,6 +351,76 @@
      mkdir ~/db/eggnog-mapper && cd ~/db/eggnog-mapper
      download_eggnog_data.py --data_dir ~/db/eggnog-mapper -y -f -P -M -H -d taxid
 
+## 5.2 Construct a bacterial kegg database (构建细菌KEGG数据库)
+### The workflow:(流程如下：)
+1. download KEGG Organism list
+curl https://rest.kegg.jp/list/organism > KEGG.Organism.txt
+
+2. extrac bacterial KRGG list
+grep "Bacteria" KEGG.Organism.txt > KEGG.Bacteria.txt
+
+3. obtain bacterial detail information
+awk -F'\t' '{print "https://www.genome.jp/kegg-bin/show_organism?org=" $1}' KEGG.Bacteria.txt > KEGG.Bacteria.link.txt
+
+4. obtain KEGG2NCBI
+cat KEGG.Bacteria.link.txt | xargs -n 1 curl -L | grep -wio "https://ftp.ncbi.nlm.nih.gov/genomes[0-9_a-zA-Z\/.\-]*" > KEGG2NCBI.txt
+
+5. obtain the download link
+cat KEGG2NCBI.txt | awk -F "/" '{print $NF}' | sed "s/$/&_protein.faa.gz/g" > KEGG2NCBI.suffix.txt
+paste -d '/' KEGG2NCBI.txt KEGG2NCBI.suffix.txt > KEGG2NCBI.prodown.txt
+
+6. download and extract protein sequence
+wget -i KEGG2NCBI.prodown.txt -P ./kegg_refseq
+pigz -k -d *.faa.gz -p 16
+
+7. combine the protein sequence
+cat *.faa > kegg_plants_refseq.faa
+grep -c '>' kegg_plants_refseq.faa
+
+8. obtain ncbi protein id
+bash get_ncbi_protein_id.sh
+
+get_ncbi_protein_id.sh :
+###
+ids=$(awk '{print $2}' KEGG.Bacteria.txt)
+for id in $ids; do
+ result=$(echo "http://rest.kegg.jp/conv/${id}/ncbi-proteinid")
+ echo $result >> KEGG.Bacteria.ncbiproid.temp.txt
+done
+###
+
+cat KEGG.Bacteria.ncbiproid.temp.txt | xargs -n 1 curl -L> KEGG.Bacteria.ncbiproid.txt
+
+9. obtain gene id and KO list
+awk -F'\t' '{print "http://rest.kegg.jp/link/ko/" $2}' KEGG.Bacteria.txt > KEGG.Bacteria.Knum.temp.txt
+cat KEGG.Bacteria.Knum.temp.txt | xargs -n 1 curl -L> KEGG.Bacteria.Knum.txt
+
+10. obtain NCBI2KEGG list
+python NCBI2KEGG.py
+NCBI2KEGG.py :
+###
+import pandas as pd
+
+file1 = "KEGG.Bacteria.ncbiproid.txt"  
+file2 = "KEGG.Bacteria.Knum.txt"  
+output_file = "Bacteria.NCBI2KEGG.txt"  
+
+df1 = pd.read_csv(file1, header=None, sep="\t")
+df1.columns = ['ncbi', 'eco'] 
+df1['ncbi'] = df1['ncbi'].str.split(":").str[1] 
+
+df2 = pd.read_csv(file2, header=None, sep="\t")
+df2.columns = ['eco', 'ko'] 
+
+merged_df = pd.merge(df1, df2, on='eco')
+
+merged_df = merged_df[['ncbi', 'ko']]
+
+merged_df.to_csv(output_file, sep="\t", index=False, header=False)
+
+print("The files are merged and the results have been saved to:", output_file)
+###
+
 # 6. Software installation for metagenomic binning (安装宏基因组分箱软件)
 ## 6.1 Install binners for nanopore metagenomic assemblies (纳米孔宏基因组分箱软件安装)
 ### SemiBin installation (安装SemiBin)
