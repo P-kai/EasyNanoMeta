@@ -16,10 +16,14 @@ At first, following the document (https://github.com/sylabs/singularity/blob/mai
 Then, download the EasyNanoMeta.sif (xxx) to your computer.
 
 ### 2. Use the pipeline through shell scripts
-#### Readme.md: Introduction  
-#### install.sh: Dependencies installation. Folowing the script to install tools for nanopore metagenomic analysis.  
-#### pipeline.sh: Command-line analysis for Linux. A guidance for analyzing nanopore metagenomic data.  
-#### Python scripts for data analysis: We provided many scripts for data processing.  
+#### Readme.md  
+Introduction  
+#### install.sh  
+Dependencies installation. Folowing the script to install tools for nanopore metagenomic analysis.  
+#### pipeline.sh  
+Command-line analysis for Linux. A guidance for analyzing nanopore metagenomic data.  
+#### Python scripts for data analysis  
+We provided many scripts for data processing.  
 For examples:  
 Functional gene abundance calculation:  
 ``$ python abundance_calculate.py --help``  
@@ -63,7 +67,8 @@ Merge multiple tables:
 ``                        Dataframes.``  
 
 
-#### Rscripts_for_ploting: Examples for ploting using R.    
+#### Rscripts_for_ploting  
+Examples for ploting using R.    
 
 ## Dependencies
 ### Software management
