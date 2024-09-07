@@ -11,10 +11,13 @@ With the widespread application of nanopore sequencing in microbiology, there ha
 This comprehensive statement encompasses the various steps involved in the analysis process, along with the corresponding tools employed. The initial step in analyzing nanopore sequencing data involves data quality control, including basecalling, filtering and host sequences removal. Then, the the main steps of nanopore metagenomic data analysis were summarized into assembly-free strategy and assembly-based strategy. Assembly-free long-read metagenomic profiling can quickly estimate the abundance of species and functional genes employing few computing resources. In comparison, assembly-based nanopore metagenomic data analysis enable us to study more high-quality MAGs and their functions.
 
 ## How to use?  
-### 1. Readme.md: Introduction  
-### 2. install.sh: Dependencies installation. Folowing the script to install tools for nanopore metagenomic analysis.  
-### 3. pipeline.sh: Command-line analysis for Linux. A guidance for analyzing nanopore metagenomic data.  
-### 4. Python scripts for data analysis: We provided many scripts for data processing.  
+### 1. Use the pipeline through Singularity
+
+### 2. Use the pipeline through shell scripts
+#### Readme.md: Introduction  
+#### install.sh: Dependencies installation. Folowing the script to install tools for nanopore metagenomic analysis.  
+#### pipeline.sh: Command-line analysis for Linux. A guidance for analyzing nanopore metagenomic data.  
+#### Python scripts for data analysis: We provided many scripts for data processing.  
 For examples:  
 Functional gene abundance calculation:  
 ``$ python abundance_calculate.py --help``  
@@ -58,7 +61,7 @@ Merge multiple tables:
 ``                        Dataframes.``  
 
 
-### 5. Rscripts_for_ploting: Examples for ploting using R.    
+#### Rscripts_for_ploting: Examples for ploting using R.    
 
 ## Dependencies
 ### Software management
