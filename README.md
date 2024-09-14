@@ -41,6 +41,83 @@ options:
                         Path to GTDB-Tk database path.
 ```
 
+Output folders: easynanometa_result
+```
+.
+├── abricate_out
+│   ├── abricate_arg_out
+│   ├── abricate_is_out
+│   ├── abricate_vf_out
+│   ├── arg_abundance_out
+│   ├── SRR8641382.lite.1.fasta
+│   ├── SRR8641383.lite.1.fasta
+│   └── SRR8641384.lite.1.fasta
+├── adapters_removal_out
+│   ├── SRR8641382.lite.1_output.fastq
+│   ├── SRR8641383.lite.1_output.fastq
+│   └── SRR8641384.lite.1_output.fastq
+├── centrifuge_out
+│   ├── SRR8641382.lite.1_fitted_raw_kraken_report
+│   ├── SRR8641382.lite.1_report
+│   ├── SRR8641382.lite.1_result
+│   ├── SRR8641383.lite.1_fitted_raw_kraken_report
+│   ├── SRR8641383.lite.1_report
+│   ├── SRR8641383.lite.1_result
+│   ├── SRR8641384.lite.1_fitted_raw_kraken_report
+│   ├── SRR8641384.lite.1_report
+│   └── SRR8641384.lite.1_result
+├── checkm2_out
+│   └── SRR8641382.lite.1_checkm2_out
+├── gtdbtk_out
+│   └── SRR8641382.lite.1_gtdbtk_out
+├── host_removal_out
+│   ├── human_genome.min
+│   ├── SRR8641382.lite.1.fasta
+│   ├── SRR8641382.lite.1_fitted_raw.fastq
+│   ├── SRR8641382.lite.1_minimap.sam
+│   ├── SRR8641382.lite.1_unique.fastq
+│   ├── SRR8641382.lite.1_unmaped_minimap.bam
+│   ├── SRR8641382.lite.1_unmaped_sorted_minimap.bam
+│   ├── SRR8641383.lite.1.fasta
+│   ├── SRR8641383.lite.1_fitted_raw.fastq
+│   ├── SRR8641383.lite.1_minimap.sam
+│   ├── SRR8641383.lite.1_unique.fastq
+│   ├── SRR8641383.lite.1_unmaped_minimap.bam
+│   ├── SRR8641383.lite.1_unmaped_sorted_minimap.bam
+│   ├── SRR8641384.lite.1.fasta
+│   ├── SRR8641384.lite.1_fitted_raw.fastq
+│   ├── SRR8641384.lite.1_minimap.sam
+│   ├── SRR8641384.lite.1_unique.fastq
+│   ├── SRR8641384.lite.1_unmaped_minimap.bam
+│   └── SRR8641384.lite.1_unmaped_sorted_minimap.bam
+├── kraken2_out
+│   ├── SRR8641382.lite.1_kraken2_report
+│   ├── SRR8641382.lite.1_kraken2_result
+│   ├── SRR8641383.lite.1_kraken2_report
+│   ├── SRR8641383.lite.1_kraken2_result
+│   ├── SRR8641384.lite.1_kraken2_report
+│   └── SRR8641384.lite.1_kraken2_result
+├── metaflye_out
+│   ├── SRR28442024.1_flye_out
+│   ├── SRR8641382.lite.1_flye_out
+│   ├── SRR8641383.lite.1_flye_out
+│   └── SRR8641384.lite.1_flye_out
+├── nextpolish_out
+│   ├── SRR28442024.1_nextpolish_out
+│   ├── SRR8641382.lite.1.cfg
+│   ├── SRR8641382.lite.1.fofn
+│   ├── SRR8641382.lite.1_nextpolish_out
+│   ├── SRR8641383.lite.1.cfg
+│   ├── SRR8641383.lite.1.fofn
+│   ├── SRR8641383.lite.1_nextpolish_out
+│   ├── SRR8641384.lite.1.cfg
+│   ├── SRR8641384.lite.1.fofn
+│   └── SRR8641384.lite.1_nextpolish_out
+└── semi_bin_out
+    ├── bam_out
+    └── SRR8641382.lite.1_bin_out
+```
+
 ### 2. Use the pipeline through shell scripts
 #### Readme.md  
 Introduction  
