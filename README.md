@@ -14,7 +14,7 @@ This comprehensive statement encompasses the various steps involved in the analy
 ### 1. Use the pipeline through Singularity
 At first, following the document (https://github.com/sylabs/singularity/blob/main/INSTALL.md) to install Singularity.  
 Then, download the EasyNanoMeta.sif (https://figshare.com/articles/software/A_singularity_sandbox_for_EasyNanoMeta_/27014869?file=49175110) to your computer.  
-Using scripts xxx to perform data analysis.
+Using scripts easynanometa.py to perform data analysis.
 
 ### 2. Use the pipeline through shell scripts
 #### Readme.md  
