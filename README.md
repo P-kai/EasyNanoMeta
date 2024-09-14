@@ -38,6 +38,7 @@ options:
                         Path to checkm2 database path.
   -gtdbtk-db GTDBTK_DATABASE, --gtdbtk-database GTDBTK_DATABASE
                         Path to GTDB-Tk database path.
+```
 
 ### 2. Use the pipeline through shell scripts
 #### Readme.md  
