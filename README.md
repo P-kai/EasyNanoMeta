@@ -16,7 +16,7 @@ At first, following the document (https://github.com/sylabs/singularity/blob/mai
 Then, download the EasyNanoMeta.sif (https://figshare.com/articles/software/A_singularity_sandbox_for_EasyNanoMeta_/27014869?file=49175110) to your computer.  
 Using scripts easynanometa.py to perform data analysis.
 
-`usage: easynanometa.py [-h] -f FOLDER [-t THREADS] -host-removal-reference HOST_REMOVAL_REFERENCE
+```usage: easynanometa.py [-h] -f FOLDER [-t THREADS] -host-removal-reference HOST_REMOVAL_REFERENCE
                        -centrifuge-db CENTRIFUGE_DB -kraken2-db KRAKEN2_DB
                        [-checkm2-db CHECKM2_DATABASE] [-gtdbtk-db GTDBTK_DATABASE]
 
@@ -37,7 +37,7 @@ options:
   -checkm2-db CHECKM2_DATABASE, --checkm2-database CHECKM2_DATABASE
                         Path to checkm2 database path.
   -gtdbtk-db GTDBTK_DATABASE, --gtdbtk-database GTDBTK_DATABASE
-                        Path to GTDB-Tk database path.`
+                        Path to GTDB-Tk database path.```
 
 ### 2. Use the pipeline through shell scripts
 #### Readme.md  
