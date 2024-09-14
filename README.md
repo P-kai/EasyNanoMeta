@@ -41,7 +41,7 @@ options:
                         Path to GTDB-Tk database path.
 ```
 
-Output folders: easynanometa_result
+Example output folders: easynanometa_result
 ```
 .
 ├── abricate_out
