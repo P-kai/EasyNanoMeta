@@ -41,6 +41,32 @@ options:
                         Path to GTDB-Tk database path.
 ```
 
+Configure databases for easynanometa.sif
+```
+mkdir ~/db
+cd ~/db
+
+#human_genome:
+wget https://ftp.ncbi.nih.gov/genomes/all/GCA/000/001/405/GCA_000001405.28_GRCh38.p13/C
+gunzip GCA_000001405.28_GRCh38.p13_genomic.fna.gz
+
+#kraken2:
+wget https://genome-idx.s3.amazonaws.com/kraken/k2_standard_20230605.tar.gz
+tar -zcvf k2_standard_20230605.tar.gz -C ~/db/k2_standard/
+
+#centrifuge:
+wget https://zenodo.org/record/3732127/files/h%2Bp%2Bv%2Bc.tar.gz?download=1
+tar -zxvf centrifuge_h+p+v.tar.gz
+
+#checkm2
+wget https://zenodo.org/record/5571251/files/checkm2_database.tar.gz
+tar -zxvf checkm2_database.tar.gz
+
+#gtdbtk
+wget -c https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/auxillary_files/gtdbtk_data.tar.gz
+tar -zxvf gtdbtk_data.tar.gz
+```
+
 Example output folders: easynanometa_result
 ```
 .
