@@ -66,6 +66,16 @@ tar -zxvf checkm2_database.tar.gz
 wget -c https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/auxillary_files/gtdbtk_data.tar.gz
 tar -zxvf gtdbtk_data.tar.gz
 ```
+Put ``easynanometa.sif`` and ``easynanometa.py`` in the same floder.
+Example usage:
+```
+easynanometa.py -f /path/to/folder -t 40 \
+-host-removal-reference /path/to/reference_genome.fasta \
+-centrifuge-db /path/to/database/centrifuge/hpvc/hpvc \
+-kraken2-db /path/to/database/kraken2_db/k2-standard \
+-checkm2-db /path/to/databases/checkm2/CheckM2_database/uniref100.KO.1.dmnd \
+-gtdbtk-db /path/to/database/gtdbtk/release214
+```
 
 Example output folders: easynanometa_result
 ```
