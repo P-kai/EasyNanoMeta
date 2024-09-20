@@ -512,6 +512,17 @@
     --itype metagenome \
     --cpu 24
 
+### 6.1.2 使用diamond和本地细菌KEGG数据库进行功能注释
+    #软件使用
+    #使用prodigal进行宏基因组组装结果的基因预测
+    i=sample_name
+    prodigal -i ${i}.fasta -f gff -o ${i}_gene.gff3 -p meta -d ${i}_gene.fna -a ${i}_gene.faa
+    
+    #使用diamond进行基因功能比对
+    diamond blastx -q ${i}_gene.fna -d kb_refseq.dmnd \
+    --max-hsps 1 --max-target-seqs 1 --sensitive --outfmt 6 --evalue 1e-5 -p 16 \
+    -o kegg_${i}_match.out 
+
 # 七、三代宏基因组组装结果分箱及分箱提纯、重组装分析
 
 ## 7.1 纯三代宏基因组组装结果分箱
