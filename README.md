@@ -66,7 +66,7 @@ tar -zxvf checkm2_database.tar.gz
 wget -c https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/auxillary_files/gtdbtk_data.tar.gz
 tar -zxvf gtdbtk_data.tar.gz
 ```
-Put ``easynanometa.sif`` and ``easynanometa.py`` in the same floder.
+Put ``easynanometa.sif`` and ``easynanometa.py`` in the same floder.   
 Example usage:
 ```
 easynanometa.py -f /path/to/folder -t 40 \
