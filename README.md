@@ -154,6 +154,11 @@ Example output folders: easynanometa_result
     └── SRR8641382.lite.1_bin_out
 ```
 
+Alternatively, using ``easynanometa2.py``to call individual tool.
+```
+./easynanometa2.py -h
+```
+
 ### 2. Use the pipeline through shell scripts
 #### Readme.md  
 Introduction  
