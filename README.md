@@ -173,7 +173,7 @@ positional arguments:
     host-removal        Run host_removal to remove host genome.
     centrifuge          Run Centrifuge classifier.
     arg-abundance       Run calculating abundance for ARGs.
-    nextpolish          Run calibration for flye results.
+    nextpolish          Run polish for flye results.
     semibin             Run SemiBin for NextPolish results.
     checkm2             Run Checkm2 for SemiBin output.
     gtdbtk              Run GTDBTK for SemiBin output.
