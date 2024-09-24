@@ -71,9 +71,9 @@ def main():
     parser_arg_abundance.add_argument('-fa', '--fasta_dir', required=True, help='Path to the directory containing fasta flies.')
 
     # Create a subcommand parser for NextPolish
-    parser_nextpolish = subparsers.add_parser('nextpolish', help='Run calibration for flye results.')
+    parser_nextpolish = subparsers.add_parser('nextpolish', help='Run polish for flye results.')
     parser_nextpolish.add_argument('-i', '--input_dir', required=True, help='Directory containing host removal output.')
-    parser_nextpolish.add_argument('-o', '--output_dir', required=True, help='Directory for storing the nextpolish calibration output.')
+    parser_nextpolish.add_argument('-o', '--output_dir', required=True, help='Directory for storing the nextpolish output.')
     parser_nextpolish.add_argument('-s', '--singularity_image', required=True, help='Path to the Singularity image (easynanometa.sif).')
     parser_nextpolish.add_argument('-t', '--threads', default=24, type=int, help='Number of threads to use.')
     parser_nextpolish.add_argument('-f', '--flye_dir', required=True, help='Path to the directory containing fasta flies.')
