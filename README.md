@@ -157,6 +157,29 @@ Example output folders: easynanometa_result
 Alternatively, using ``easynanometa2.py``to call individual tool.
 ```
 ./easynanometa2.py -h
+usage: easynanometa2.py [-h]
+                {flye,kraken2,abricate,adapters-removal,host-removal,centrifuge,arg-abundance,nextpolish,semibin,checkm2,gtdbtk}
+                ...
+
+Batch execute Flye, Kraken2 or abricate for multiple fastq files.
+
+positional arguments:
+  {flye,kraken2,abricate,adapters-removal,host-removal,centrifuge,arg-abundance,nextpolish,semibin,checkm2,gtdbtk}
+                        Choose the tool to run.
+    flye                Run Flye assembler
+    kraken2             Run Kraken2 classifier
+    abricate            Run abricate to identify functional genes.
+    adapters-removal    Run porechop_abi to remove adapters.
+    host-removal        Run host_removal to remove host genome.
+    centrifuge          Run Centrifuge classifier.
+    arg-abundance       Run calculating abundance for ARGs.
+    nextpolish          Run calibration for flye results.
+    semibin             Run SemiBin for NextPolish results.
+    checkm2             Run Checkm2 for SemiBin output.
+    gtdbtk              Run GTDBTK for SemiBin output.
+
+options:
+  -h, --help            show this help message and exit
 ```
 
 ### 2. Use the pipeline through shell scripts
