@@ -8,7 +8,7 @@ from dep import run_flye, run_kraken2, run_abricate, run_adapters_removal, run_h
 # Main function to choose Flye or Kraken2 or abricate
 def main():
     # Create a top-level parser showing flye, kraken2 and abricate options
-    parser = argparse.ArgumentParser(prog='easynano', description='Batch execute Flye, Kraken2 or abricate for multiple fastq files.')
+    parser = argparse.ArgumentParser(prog='easynanometa2.py', description='Batch execute Flye, Kraken2 or abricate for multiple fastq files.')
     subparsers = parser.add_subparsers(dest='tool', help='Choose the tool to run.')
 
     # Create a subcommand parser for flye
