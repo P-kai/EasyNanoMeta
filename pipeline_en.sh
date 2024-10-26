@@ -574,7 +574,7 @@
     # Determine whether third-party programs and databases required by the software are working properly
     gtdbtk check_install 
     # Run binning species classifications and construct evolutionary tree
-    gtdbtk classify_wf --genome_dir maxbin2_bins/ --extension fa  --skip_ani_screen --out_dir gtdbtk 
+    gtdbtk classify_wf --genome_dir bins/ --extension fa  --skip_ani_screen --out_dir gtdbtk 
     gtdbtk convert_to_itol --input some_tree.tree --output itol.tree # Convert evolutionary tree file to itol format
 
 ## 7.2 Functional annotations of binning result MAG
