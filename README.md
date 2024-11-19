@@ -77,9 +77,18 @@ easynanometa.py -f /path/to/folder -t 40 \
 -gtdbtk-db /path/to/database/gtdbtk/release214
 ```
 
+Example input folders: human_sputums
+```
+mkdir human_sputums
+wget https://sra-downloadb.be-md.ncbi.nlm.nih.gov/sos5/sra-pub-zq-14/SRR008/8641/SRR8641382/SRR8641382.lite.1
+wget https://sra-downloadb.be-md.ncbi.nlm.nih.gov/sos5/sra-pub-zq-14/SRR008/8641/SRR8641382/SRR8641383.lite.1
+wget https://sra-downloadb.be-md.ncbi.nlm.nih.gov/sos5/sra-pub-zq-14/SRR008/8641/SRR8641382/SRR8641384.lite.1
+fastq-dump SRR864138*.lite.1
+```
+
 Example output folders: easynanometa_result
 ```
-.
+easynanometa_result
 ├── abricate_out
 │   ├── abricate_arg_out
 │   ├── abricate_is_out
@@ -110,22 +119,13 @@ Example output folders: easynanometa_result
 │   ├── human_genome.min
 │   ├── SRR8641382.lite.1.fasta
 │   ├── SRR8641382.lite.1_fitted_raw.fastq
-│   ├── SRR8641382.lite.1_minimap.sam
 │   ├── SRR8641382.lite.1_unique.fastq
-│   ├── SRR8641382.lite.1_unmaped_minimap.bam
-│   ├── SRR8641382.lite.1_unmaped_sorted_minimap.bam
 │   ├── SRR8641383.lite.1.fasta
 │   ├── SRR8641383.lite.1_fitted_raw.fastq
-│   ├── SRR8641383.lite.1_minimap.sam
 │   ├── SRR8641383.lite.1_unique.fastq
-│   ├── SRR8641383.lite.1_unmaped_minimap.bam
-│   ├── SRR8641383.lite.1_unmaped_sorted_minimap.bam
 │   ├── SRR8641384.lite.1.fasta
 │   ├── SRR8641384.lite.1_fitted_raw.fastq
-│   ├── SRR8641384.lite.1_minimap.sam
-│   ├── SRR8641384.lite.1_unique.fastq
-│   ├── SRR8641384.lite.1_unmaped_minimap.bam
-│   └── SRR8641384.lite.1_unmaped_sorted_minimap.bam
+│   └── SRR8641384.lite.1_unique.fastq
 ├── kraken2_out
 │   ├── SRR8641382.lite.1_kraken2_report
 │   ├── SRR8641382.lite.1_kraken2_result
@@ -134,12 +134,10 @@ Example output folders: easynanometa_result
 │   ├── SRR8641384.lite.1_kraken2_report
 │   └── SRR8641384.lite.1_kraken2_result
 ├── metaflye_out
-│   ├── SRR28442024.1_flye_out
 │   ├── SRR8641382.lite.1_flye_out
 │   ├── SRR8641383.lite.1_flye_out
 │   └── SRR8641384.lite.1_flye_out
 ├── nextpolish_out
-│   ├── SRR28442024.1_nextpolish_out
 │   ├── SRR8641382.lite.1.cfg
 │   ├── SRR8641382.lite.1.fofn
 │   ├── SRR8641382.lite.1_nextpolish_out
