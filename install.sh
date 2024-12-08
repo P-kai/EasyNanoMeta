@@ -374,8 +374,8 @@ wget -i KEGG2NCBI.prodown.txt -P ./kegg_refseq
 pigz -k -d *.faa.gz -p 16
 
 7. combine the protein sequence
-cat *.faa > kegg_plants_refseq.faa
-grep -c '>' kegg_plants_refseq.faa
+cat *.faa > kegg_bacteria_refseq.faa
+grep -c '>' kegg_bacteria_refseq.faa
 
 8. obtain ncbi protein id
 bash get_ncbi_protein_id.sh
