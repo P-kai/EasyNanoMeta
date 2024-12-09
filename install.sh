@@ -376,6 +376,7 @@ pigz -k -d *.faa.gz -p 16
 7. combine the protein sequence
 cat *.faa > kegg_bacteria_refseq.faa
 grep -c '>' kegg_bacteria_refseq.faa
+diamond makedb --in kegg_bacteria_refseq.faa -d kb_refseq
 
 8. obtain ncbi protein id
 bash get_ncbi_protein_id.sh
