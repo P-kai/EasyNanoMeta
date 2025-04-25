@@ -294,6 +294,6 @@ We used four hybrid assembly strategies and four long-read assembly strategies t
 
 
 ### Citation
-Benchmarking Analysis Tools and Developing Pipelines for Nanopore Long-Read Metagenomics: From One Health Perspective(Pending)
+Peng K, Gao Y, Li C, Wang Q, Yin Y, Hameed MF, Feil E, Chen S, Wang Z, Liu YX, Li R. Benchmarking of analysis tools and pipeline development for nanopore long-read metagenomics. Sci Bull (Beijing). 2025 Mar 20:S2095-9273(25)00310-X. doi: 10.1016/j.scib.2025.03.044.
 
 Copyright 2023-2026 Kai Peng 008719@yzu.edu.cn
