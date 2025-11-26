@@ -13,7 +13,7 @@ This comprehensive statement encompasses the various steps involved in the analy
 ## How to use?  
 ### 1. Use the pipeline through Singularity
 · At first, following the document (https://github.com/sylabs/singularity/blob/main/INSTALL.md) to install Singularity.  
-· Then, download the EasyNanoMeta.sif in your computer (https://figshare.com/articles/software/A_singularity_sandbox_for_EasyNanoMeta_/27014869?file=49175110).  
+· Then, download the EasyNanoMeta.sif in your computer (Figshare: https://figshare.com/articles/software/A_singularity_sandbox_for_EasyNanoMeta_/27014869?file=49175110 Quark Cloud Disk: https://pan.quark.cn/s/c2ab5f8a4149).  
 · Using script easynanometa.py to perform data analysis.
 ```
 ./easynanometa.py -h
@@ -297,3 +297,4 @@ We used four hybrid assembly strategies and four long-read assembly strategies t
 Peng K, Gao Y, Li C, Wang Q, Yin Y, Hameed MF, Feil E, Chen S, Wang Z, Liu YX, Li R. Benchmarking of analysis tools and pipeline development for nanopore long-read metagenomics. Sci Bull (Beijing). 2025 Mar 20:S2095-9273(25)00310-X. doi: 10.1016/j.scib.2025.03.044.
 
 Copyright 2023-2026 Kai Peng 008719@yzu.edu.cn
+
